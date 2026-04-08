@@ -1,0 +1,349 @@
+/* ============================================
+   🎨 ALL BUTTON STYLES
+   ============================================ */
+
+/* ============================================
+   BASE BUTTON STYLES
+   ============================================ */
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ============================================
+   LOGOUT BUTTON
+   ============================================ */
+
+#logout {
+  margin-left: 0px;
+  padding: 8px 10px;
+  background-color: orange;
+  color: var(--button-text-color);
+  border: 2px solid var(--button-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 12px;
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-base);
+}
+
+#logout:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+#logout:disabled {
+  background-color: #cccccc !important;
+  color: #666666 !important;
+  border-color: #cccccc !important;
+  cursor: not-allowed !important;
+  opacity: 0.5 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+#logout:disabled:hover {
+  opacity: 0.5 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ============================================
+   THEME TOGGLE BUTTON
+   ============================================ */
+
+.theme-toggle-client {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  background-color: var(--background-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 10px;
+}
+
+.theme-toggle-client:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle-client .theme-icon {
+  transition: all 0.3s ease;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.theme-toggle-client .sun-icon {
+  display: block;
+}
+
+.theme-toggle-client .moon-icon {
+  display: none;
+}
+
+body[data-theme="dark"] .theme-toggle-client .sun-icon {
+  display: none;
+}
+
+body[data-theme="dark"] .theme-toggle-client .moon-icon {
+  display: block;
+}
+
+body[data-theme="dark"] .theme-toggle-client {
+  border-color: #eaeaea;
+  background-color: #16213e;
+}
+
+.theme-toggle-client svg {
+  color: var(--primary-color);
+  stroke: var(--primary-color);
+  fill: none;
+  width: 20px;
+  height: 20px;
+}
+
+.theme-toggle-client svg * {
+  stroke: var(--primary-color);
+}
+
+body[data-theme="dark"] .theme-toggle-client svg {
+  color: #eaeaea;
+  stroke: #eaeaea;
+}
+
+body[data-theme="dark"] .theme-toggle-client svg * {
+  stroke: #eaeaea;
+}
+
+/* ============================================
+   LANGUAGE BUTTON
+   ============================================ */
+
+.language-btn {
+  background-color: transparent;
+  color: var(--button-text-color);
+  border: 1px solid white;
+  border-radius: var(--border-radius);
+  padding: 7px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-base);
+}
+
+.language-btn:hover,
+.language-btn.active {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.language-btn.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   ACTION BUTTONS (START/FINISH)
+   ============================================ */
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.action-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-base);
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.start-button {
+  background-color: var(--submit-button-bg-color);
+  color: var(#0060);
+}
+
+.reset-button {
+  background-color: var(--secondary-button-bg-color);
+  color: var(--secondary-button-text-color);
+}
+
+/* ============================================
+   DRAWER ARROW BUTTON
+   ============================================ */
+
+.drawer-arrow-btn {
+  position: fixed;
+  left: 0;
+  top: 55%;
+  transform: translateY(-50%);
+  background: #003366 !important;
+  background-color: #003366 !important;
+  border: none !important;
+  border-color: transparent !important;
+  color: var(--submit-button-text-color);
+  width: 30px;
+  height: 60px;
+  border-radius: 0 30px 30px 0;
+  cursor: pointer;
+  z-index: 1001;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.drawer-arrow-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--white-overlay-02), transparent);
+  transition: left 0.6s ease;
+}
+
+.drawer-arrow-btn:hover::before {
+  left: 100%;
+}
+
+.drawer-arrow-btn:hover {
+  transform: translateY(-50%) translateX(8px) scale(1.05);
+}
+
+.drawer-arrow-btn.active {
+  transform: translateY(-50%) translateX(380px);
+}
+
+.arrow-icon {
+  font-size: 18px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-shadow: 2px 2px 4px var(--black-overlay-03);
+  color: #fff;
+}
+
+.drawer-arrow-btn.active .arrow-icon {
+  transform: rotate(180deg) scale(1.1);
+}
+
+/* ============================================
+   MODAL BUTTONS
+   ============================================ */
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modal-btn {
+  padding: 8px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.submit-btn {
+  background-color: var(--submit-button-bg-color);
+  color: var(--submit-button-text-color);
+}
+
+.cancel-btn {
+  background-color: var(--secondary-button-bg-color);
+  color: var(--secondary-button-text-color);
+}
+
+.submit-btn:hover,
+.cancel-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   IDLE MODAL BUTTONS
+   ============================================ */
+
+.idle-modal-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.idle-btn {
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.idle-btn-primary {
+  background: linear-gradient(135deg, #006039 0%, #004d2e 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 96, 57, 0.3);
+}
+
+.idle-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 96, 57, 0.4);
+}
+
+.idle-btn-secondary {
+  background: #f8f9fa;
+  color: #666;
+  border: 2px solid #dee2e6;
+}
+
+.idle-btn-secondary:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .idle-modal-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .idle-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

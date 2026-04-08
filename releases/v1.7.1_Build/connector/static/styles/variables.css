@@ -1,0 +1,251 @@
+/* ====================================
+   DDS FOCUS PRO - CSS DESIGN SYSTEM
+   Professional Color & Typography Variables
+   ====================================== */
+
+:root {
+  /* ====== API-DRIVEN BRAND COLORS ====== */
+  /* These will be populated by config-manager.js from DDS API */
+  --primary-color: ;  /* Will be set from API primary_color */
+  --primary-light: ;  /* Generated from primary_color */
+  --primary-dark: ;   /* Generated from primary_color */
+  --primary-darker: ; /* Generated from primary_color */
+  
+  --secondary-color: ;  /* Will be set from API secondary_color */
+  --secondary-light: ;  /* Generated from secondary_color */
+  --secondary-dark: ;   /* Generated from secondary_color */
+  
+  --background-color: ; /* Will be set from API background_color */
+  --background-light: ; /* Generated from background_color */
+  --background-dark: ;  /* Generated from background_color */
+  
+  --button-color: ;     /* Will be set from API button_color */
+  --button-light: ;     /* Generated from button_color */
+  --button-dark: ;      /* Generated from button_color */
+  
+  --text-color: ;       /* Will be set from API text_color */
+  --text-light: ;       /* Generated from text_color */
+  --text-dark: ;        /* Generated from text_color */
+  
+  /* ====== ACCENT COLORS - Generated from API colors ====== */
+  --accent-color: ;     /* Will use secondary_color from API */
+  --accent-light: ;     /* Generated from accent-color */
+  --accent-dark: ;      /* Generated from accent-color */
+  
+  /* ====== STATE COLORS - Enhanced from API colors ====== */
+  --success-color: ;    /* Enhanced from secondary_color or default */
+  --success-light: ;    /* Generated from success-color */
+  --success-dark: ;     /* Generated from success-color */
+  
+  --warning-color: ;    /* Enhanced from button_color or default */
+  --warning-light: ;    /* Generated from warning-color */
+  --warning-dark: ;     /* Generated from warning-color */
+  
+  --error-color: ;      /* System default or generated */
+  --error-light: ;      /* Generated from error-color */
+  --error-dark: ;       /* Generated from error-color */
+  
+  --info-color: ;       /* Enhanced from secondary_color or default */
+  --info-light: ;       /* Generated from info-color */
+  --info-dark: ;        /* Generated from info-color */
+  
+  /* ====== NEUTRAL COLORS - Generated from API colors ====== */
+  --white: #ffffff;    /* System essential - pure white */
+  --black: #000000;    /* System essential - pure black */
+  --gray-50: ;         /* Generated from background_color */
+  --gray-100: ;        /* Generated from background_color */
+  --gray-200: ;        /* Generated from background_color */
+  --gray-300: ;        /* Generated from text_color */
+  --gray-400: ;        /* Generated from text_color */
+  --gray-500: ;        /* Generated from text_color */
+  --gray-600: ;        /* Generated from text_color */
+  --gray-700: ;        /* Generated from text_color */
+  --gray-800: ;        /* Generated from text_color */
+  --gray-900: ;        /* Generated from text_color */
+  
+  /* ====== INTERACTION COLORS - Generated from API colors ====== */
+  --hover-color: ;        /* Generated from primary_color */
+  --hover-light: ;        /* Generated from primary_color */
+  --hover-overlay: ;      /* Generated from primary_color */
+  
+  --active-color: ;       /* Generated from primary_color */
+  --active-light: ;       /* Generated from primary_color */
+  
+  --focus-color: ;        /* Enhanced from secondary_color or default */
+  --focus-shadow: ;       /* Generated from primary_color */
+  
+  --disabled-color: ;     /* System default */
+  --disabled-bg: ;        /* System default */
+  --disabled-border: ;    /* System default */
+  --disabled-text: ;      /* System default */
+  
+  --loading-color: ;      /* Enhanced from secondary_color */
+  --loading-bg: ;         /* Generated from loading-color */
+  
+  /* ====== BACKGROUND COLORS - Enhanced from API ====== */
+  --bg-primary: ;         /* Enhanced from background_color or default */
+  --bg-secondary: ;       /* Generated from background_color */
+  --bg-tertiary: ;        /* Generated from background_color */
+  --bg-dark: ;            /* System default or generated from text_color */
+  --bg-overlay: rgba(0, 0, 0, 0.5);    /* System default */
+  --bg-glass: ;           /* Generated from background_color */
+  --bg-blur: ;            /* Generated from background_color */
+  
+  /* ====== GRADIENT BACKGROUNDS - Generated from API colors ====== */
+  --gradient-primary: ;   /* Generated from primary_color and variations */
+  --gradient-secondary: ; /* Generated from secondary_color and background_color */
+  --gradient-glass: ;     /* Generated from background_color */
+  
+  /* ====== TYPOGRAPHY ====== */
+  /* Font Families */
+  --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-secondary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+  --font-display: 'Poppins', 'Segoe UI', sans-serif;
+  
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  /* ====== SPACING SYSTEM ====== */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 0.75rem;   /* 12px */
+  --spacing-base: 1rem;    /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 2.5rem;   /* 40px */
+  --spacing-3xl: 3rem;     /* 48px */
+  --spacing-4xl: 4rem;     /* 64px */
+  --spacing-5xl: 5rem;     /* 80px */
+  
+  /* ====== BORDER RADIUS ====== */
+  --radius-none: 0;
+  --radius-sm: 0.125rem;   /* 2px */
+  --radius-base: 0.25rem;  /* 4px */
+  --radius-md: 5px;        /* 5px - Updated for consistent button radius */
+  --radius-lg: 0.5rem;     /* 8px */
+  --radius-xl: 0.75rem;    /* 12px */
+  --radius-2xl: 1rem;      /* 16px */
+  --radius-3xl: 1.5rem;    /* 24px */
+  --radius-full: 9999px;
+  
+  /* ====== SHADOWS ====== */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --shadow-primary: ;     /* Generated from primary_color */
+  --shadow-primary-lg: ;  /* Generated from primary_color */
+  
+  /* ====== BORDERS ====== */
+  --border-width: 1px;
+  --border-width-2: 2px;
+  --border-width-4: 4px;
+  --border-style: solid;
+  --border-color: var(--gray-300);
+  --border-primary: var(--border-width) var(--border-style) var(--primary-color);
+  --border-secondary: var(--border-width) var(--border-style) var(--gray-300);
+  
+  /* ====== TRANSITIONS ====== */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-base: 0.3s ease-in-out;
+  --transition-slow: 0.6s ease-in-out;
+  --transition-smooth: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  
+  /* ====== Z-INDEX LAYERS ====== */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-drawer: 999;
+  --z-overlay: 998;
+  
+  /* ====== COMPONENT SPECIFIC ====== */
+  /* Buttons */
+  --btn-padding-y: var(--spacing-sm);
+  --btn-padding-x: var(--spacing-base);
+  --btn-font-size: var(--font-size-base);
+  --btn-font-weight: var(--font-weight-medium);
+  --btn-border-radius: var(--radius-md);
+  --btn-transition: all var(--transition-fast);
+  
+  /* Cards */
+  --card-padding: var(--spacing-lg);
+  --card-border-radius: var(--radius-lg);
+  --card-shadow: var(--shadow-base);
+  --card-border: var(--border-secondary);
+  
+  /* Forms */
+  --input-padding-y: var(--spacing-md);
+  --input-padding-x: var(--spacing-base);
+  --input-font-size: var(--font-size-base);
+  --input-border-radius: var(--radius-md);
+  --input-border: var(--border-secondary);
+  --input-focus-border: var(--border-width-2) var(--border-style) var(--primary-color);
+  
+  /* Drawer/Sidebar */
+  --drawer-width: 380px;
+  --drawer-bg: transparent;
+  --drawer-backdrop: rgba(0, 0, 0, 0.5);
+  --drawer-transition: all var(--transition-smooth);
+  
+  /* ====== RESPONSIVE BREAKPOINTS ====== */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+}
+
+/* ====== DARK MODE VARIABLES ====== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* These will be overridden by API colors anyway */
+    --bg-primary: var(--background-color);
+    --bg-secondary: var(--background-light);
+    --bg-tertiary: var(--background-dark);
+    --text-primary: var(--text-color);
+    --text-secondary: var(--text-light);
+    --border-color: var(--border-color);
+  }
+}
+
+/* ====== PRINT STYLES ====== */
+@media print {
+  :root {
+    --shadow-sm: none;
+    --shadow-base: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --shadow-xl: none;
+    --shadow-2xl: none;
+  }
+}

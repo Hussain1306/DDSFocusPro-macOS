@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - DDS Focus Pro</title>
+    <link rel="stylesheet" href="../static/help.css">
+</head>
+<body>
+    <div class="help-container">
+        <!-- Header -->
+        <header class="help-header">
+      
+            <div class="header-content">
+                <h1 data-translatable="helpCenterTitle">DDS Focus Pro Help Center</h1>
+                <p data-translatable="helpCenterSubtitle">Get the most out of your time tracking experience</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="help-content">
+            <!-- Search Bar -->
+        
+
+            <!-- Quick Links -->
+            <section class="quick-links">
+                <h2 data-translatable="quickStartGuide">Quick Start Guide</h2>
+                <div class="links-grid">
+                    <a href="#getting-started" class="link-card">
+                        <div class="icon">
+                            <img src="../static/images/start-gif.gif" alt="Getting Started" class="guide-gif">
+                        </div>
+                        <h3 data-translatable="gettingStarted">Getting Started</h3>
+                        <p data-translatable="learnBasics">Learn the basics of DDS Focus Pro</p>
+                    </a>
+                    <a href="#work-mode" class="link-card">
+                        <div class="icon">
+                            <img src="../static/images/work-gif.gif" alt="Work Mode" class="guide-gif">
+                        </div>
+                        <h3 data-translatable="workMode">Work Mode</h3>
+                        <p data-translatable="trackWorkTime">Track your work time effectively</p>
+                    </a>
+                    <a href="#meeting-mode" class="link-card">
+                        <div class="icon">
+                            <img src="../static/images/Meeting-gif.gif" alt="Meeting Mode" class="guide-gif">
+                        </div>
+                        <h3 data-translatable="meetingMode">Meeting Mode</h3>
+                        <p data-translatable="logMeetings">Log your meetings seamlessly</p>
+                    </a>
+                    <a href="#screenshots" class="link-card">
+                        <div class="icon">
+                            <img src="../static/images/ScreenRecordings-gif.gif" alt="Screenshots" class="guide-gif">
+                        </div>
+                        <h3 data-translatable="screenshots">Screenshots</h3>
+                        <p data-translatable="understandScreenCapture">Understand screen capture settings</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h2 data-translatable="faqTitle">Frequently Asked Questions</h2>
+
+                <div id="getting-started" class="faq-category">
+                    <h3 data-translatable="gettingStarted">Getting Started</h3>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-translatable="howStartTracking">How do I start tracking my work time?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-translatable="toStartTracking">To start tracking your work time:</p>
+                            <ol>
+                                <li data-translatable="selectProjectStep">Select a <strong>Project</strong> from the dropdown menu</li>
+                                <li data-translatable="chooseTaskStep">Choose a <strong>Task</strong> associated with that project</li>
+                                <li data-translatable="workModeStep">Make sure you're in <strong>Work Mode</strong> (the button should be highlighted)</li>
+                                <li data-translatable="clickStartStep">Click the <strong>START</strong> button</li>
+                                <li data-translatable="timerStartStep">The timer will begin counting, and screen recording will automatically start</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-translatable="whatHappensFinish">What happens when I finish a task?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-translatable="whenClickFinish">When you click the <strong>Finish</strong> button:</p>
+                            <ul>
+                                <li data-translatable="modalAppear">A modal will appear asking you to describe what you completed</li>
+                                <li data-translatable="enterNotes">Enter detailed notes about your work</li>
+                                <li data-translatable="clickSubmit">Click <strong>Submit</strong> to save your time entry</li>
+                                <li data-translatable="timesheetSent">Your timesheet will be automatically sent to the system</li>
+                                <li data-translatable="screenshotsUploaded">Screenshots taken during the session will be uploaded</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="work-mode" class="faq-category">
+                    <h3 data-translatable="workMode">Work Mode</h3>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-translatable="whatIsWorkMode">What is Work Mode?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-translatable="workModeDescription"><strong>Work Mode</strong> is the primary mode for tracking regular work sessions. When in Work Mode:</p>
+                            <ul>
+                                <li data-translatable="timerTracks">The timer tracks time spent on selected tasks</li>
+                                <li data-translatable="screenRecordingActive">Screen recording is active (based on your screenshot interval)</li>
+                                <li data-translatable="activityLogsCaptured">Activity logs are captured automatically</li>
+                                <li data-translatable="idleDetectionEnabled">Idle detection is enabled to pause the timer when you're away</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-translatable="canSwitchTasks">Can I switch tasks while the timer is running?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-translatable="cannotSwitchTasks">No, you cannot switch tasks while the timer is running. You must:</p>
+                            <ol>
+                                <li data-translatable="finishCurrentTask">Click <strong>Finish</strong> to complete the current task</li>
+                                <li data-translatable="enterTaskNotes">Enter your task completion notes</li>
+                                <li data-translatable="selectNewProject">Select a new project and task</li>
+                                <li data-translatable="clickStartAgain">Click <strong>START</strong> again to begin tracking the new task</li>
+                            </ol>
+                            <p data-translatable="ensuresAccurate">This ensures accurate time tracking for each task.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-translatable="minimumWorkTime">What is the minimum work time required?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-translatable="minimumWorkTimeAnswer">You must work for at least <strong>1 minute</strong> before you can finish a task. If you try to finish before 1 minute has elapsed, you'll see a warning message.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="meeting-mode" class="faq-category">
+                    <h3 data-translatable="meetingMode">Meeting Mode</h3>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-translatable="howTrackMeeting">How do I track meeting time?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-translatable="toTrackMeeting">To track a meeting:</p>
+                            <ol>
+                                <li data-translatable="clickMeetingMode">Click the <strong>Meeting Mode</strong> button</li>
+                                <li data-translatable="selectProjectTask">Select the project and task related to the meeting</li>
+                                <li data-translatable="clickStart">Click <strong>START</strong> to begin tracking</li>
+                                <li data-translatable="whenMeetingEnds">When the meeting ends, click <strong>Finish</strong></li>
+                                <li data-translatable="enterMeetingNotes">Enter meeting notes describing what was discussed</li>
+                                <li data-translatable="clickSubmitSave">Click <strong>Submit</strong> to save</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-translatable="meetingsWhileWorking">Can I have meetings while working on a task?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-translatable="yesMeetingsWhileWorking">Yes! If you're in Work Mode and need to attend a meeting:</p>
+                            <ul>
+                                <li data-translatable="switchMeetingMode">Switch to <strong>Meeting Mode</strong> - your work timer will pause</li>
+                                <li data-translatable="trackMeetingTime">Track the meeting time</li>
+                                <li data-translatable="whenFinished">When finished, enter meeting notes</li>
+                                <li data-translatable="switchBackWork">Switch back to <strong>Work Mode</strong> to resume your work timer</li>
+                                <li data-translatable="bothSaved">Both work and meeting notes will be saved when you finish the work session</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-translatable="differenceWorkMeeting">What's the difference between Work and Meeting modes?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <table class="comparison-table">
+                                <tr>
+                                    <th data-translatable="feature">Feature</th>
+                                    <th data-translatable="workMode">Work Mode</th>
+                                    <th data-translatable="meetingMode">Meeting Mode</th>
+                                </tr>
+                                <tr>
+                                    <td data-translatable="purpose">Purpose</td>
+                                    <td data-translatable="trackIndividualWork">Track individual work</td>
+                                    <td data-translatable="trackCollaborativeMeetings">Track collaborative meetings</td>
+                                </tr>
+                                <tr>
+                                    <td data-translatable="timer">Timer</td>
+                                    <td data-translatable="singleUnifiedTimer">Single unified timer</td>
+                                    <td data-translatable="sameTimer">Same timer (pauses work when active)</td>
+                                </tr>
+                                <tr>
+                                    <td data-translatable="screenRecording">Screen Recording</td>
+                                    <td data-translatable="yes">Yes</td>
+                                    <td data-translatable="yes">Yes</td>
+                                </tr>
+                                <tr>
+                                    <td data-translatable="notes">Notes</td>
+                                    <td data-translatable="taskCompletionDetails">Task completion details</td>
+                                    <td data-translatable="meetingDiscussionNotes">Meeting discussion notes</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="screenshots" class="faq-category">
+                    <h3 data-translatable="screenshots">Screenshots & Recording</h3>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-translatable="howScreenRecording">How does screen recording work?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-translatable="screenRecordingAuto">Screen recording automatically starts when you begin tracking time:</p>
+                            <ul>
+                                <li data-translatable="screenshotsCaptured">Screenshots are captured at intervals set by your administrator</li>
+                                <li data-translatable="intervalShown">The interval is shown in your dashboard (e.g., \"5 minutes\")</li>
+                                <li data-translatable="screenshotsUploaded">Screenshots are automatically uploaded when you finish a task</li>
+                                <li data-translatable="securelyStored">All screenshots are securely stored and accessible only to authorized personnel</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-translatable="canSeeInterval">Can I see my screenshot interval?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-translatable="intervalDisplayed">Yes! Your screenshot interval is displayed on the main dashboard under the \"Screenshot Interval\" label. This setting is configured by your system administrator.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-translatable="whatIfIdle">What happens if I'm idle during work?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-translatable="idleDetectionSystem">The system has idle detection to ensure accurate time tracking:</p>
+                            <ul>
+                                <li data-translatable="inactive3Minutes">If you're inactive for 3 minutes, the system detects you as idle</li>
+                                <li data-translatable="timerPauses">The timer automatically pauses</li>
+                                <li data-translatable="modalNotification">A modal notification appears</li>
+                                <li data-translatable="after5Seconds">After 5 seconds, your work is auto-saved with adjusted time (excluding idle time)</li>
+                                <li data-translatable="onlyPaidActive">This ensures you're only paid for active work time</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h3 data-translatable="importantNotes">Important Notes</h3>
+                    
+                    <div class="faq-item important-note">
+                        <button class="faq-question">
+                            <span data-translatable="internetConnectionRequirement">Internet Connection Requirement</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-translatable="ensureInternetConnection"><strong>Please ensure your internet connection is stable and working properly before starting work.</strong></p>
+                            <ul>
+                                <li data-translatable="goodConnectionRequired">A good internet connection is required for screenshots to upload successfully</li>
+                                <li data-translatable="timeLogsNeedConnectivity">Time logs and activity data need connectivity to sync with the server</li>
+                                <li data-translatable="checkConnection">Check your connection status before clicking START</li>
+                                <li data-translatable="connectionIssues">If you experience connection issues during work, your data may not be saved properly</li>
+                                <li data-translatable="verifySubmissions">Always verify that your submissions are successful before logging out</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item important-note">
+                        <button class="faq-question">
+                            <span data-translatable="properlyCloseWork">Properly Close Work Mode After Finishing</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-translatable="alwaysProperlyClose"><strong>Always properly close your work or meeting mode after finishing tasks.</strong></p>
+                            <ul>
+                                <li data-translatable="clickFinish">Click the <strong>Finish</strong> button to complete your session</li>
+                                <li data-translatable="enterTaskNotes2">Enter your task completion notes or meeting details</li>
+                                <li data-translatable="clickSubmitWait">Click <strong>Submit</strong> and wait for confirmation</li>
+                                <li data-translatable="doNotClose">Do NOT close the browser or application until submission is complete</li>
+                                <li data-translatable="incompleteSessions">Incomplete sessions may result in lost time tracking data</li>
+                                <li data-translatable="ensureSuccessMessage">Ensure you see a success message before moving to another task</li>
+                            </ul>
+                            <p class="warning-text" data-translatable="failureToClose">Failure to properly close sessions can lead to:</p>
+                            <ul>
+                                <li data-translatable="lostScreenshots">Lost screenshots and activity logs</li>
+                                <li data-translatable="incompleteTimesheet">Incomplete timesheet entries</li>
+                                <li data-translatable="inaccurateCalculations">Inaccurate work hour calculations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h3>Troubleshooting</h3>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>I can't select a task. What's wrong?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>If you can't select a task, try these steps:</p>
+                            <ol>
+                                <li>Make sure you've selected a <strong>Project</strong> first</li>
+                                <li>Wait a moment for tasks to load (you'll see "Loading tasks...")</li>
+                                <li>If no tasks appear, the project may not have any tasks assigned</li>
+                                <li>Contact your project manager if tasks should be available</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>The START button is disabled. Why?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>The START button is disabled when:</p>
+                            <ul>
+                                <li>A timer is already running (work or meeting)</li>
+                                <li>You haven't selected both a project and task</li>
+                                <li>You need to finish your current session first</li>
+                            </ul>
+                            <p>Complete or finish your current activity before starting a new one.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can I log out while the timer is running?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No, you cannot log out while a timer is active. This prevents accidental data loss. You must:</p>
+                            <ol>
+                                <li>Click <strong>Finish</strong> to complete your task/meeting</li>
+                                <li>Submit your notes</li>
+                                <li>Then you can safely log out</li>
+                            </ol>
+                            <p>The logout button will be disabled and grayed out when a timer is running.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>My data isn't syncing. What should I do?</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>If you experience syncing issues:</p>
+                            <ol>
+                                <li><strong>Check your internet connection immediately</strong></li>
+                                <li>Make sure you have a stable internet connection before starting work</li>
+                                <li>Try refreshing the page</li>
+                                <li>Log out and log back in</li>
+                                <li>Clear your browser cache</li>
+                                <li>If the issue persists, contact IT support</li>
+                            </ol>
+                            <p class="warning-text">⚠️ <strong>Important:</strong> Always ensure a good internet connection is available before starting any work session. Poor connectivity can result in lost screenshots, incomplete uploads, and missing timesheet data.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tips Section -->
+            <section class="tips-section">
+                <h2 data-translatable="proTips">Pro Tips</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-icon">💡</div>
+                        <h4 data-translatable="beDescriptive">Be Descriptive</h4>
+                        <p data-translatable="writeDetailedNotes">Write detailed notes when finishing tasks. This helps with project tracking and invoicing.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">⏱️</div>
+                        <h4 data-translatable="takeBreaks">Take Breaks</h4>
+                        <p data-translatable="rememberFinish">Remember to finish your current task before taking breaks. The system will detect extended idle time.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">📊</div>
+                        <h4 data-translatable="trackEverything">Track Everything</h4>
+                        <p data-translatable="useMeetingMode">Use Meeting Mode to track all collaborative time. It counts toward your total logged time.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon">🔄</div>
+                        <h4 data-translatable="stayConsistent">Stay Consistent</h4>
+                        <p data-translatable="alwaysStartStop">Always start and stop the timer for accurate tracking. Don't forget to submit your notes!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Support -->
+            <section class="support-section">
+                <h2 data-translatable="stillNeedHelp">Still Need Help?</h2>
+                <p data-translatable="ifNotFoundAnswer">If you couldn't find the answer you're looking for, please reach out to our support team.</p>
+                <div class="support-buttons">
+                    <button class="btn-primary" onclick="openReviewModal()" data-translatable="sendFeedback">Send Feedback</button>
+                    <button class="btn-secondary" onclick="window.open('https://crm.deluxebilisim.com/', '_blank')" data-translatable="openCRM">Open CRM</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="help-footer">
+            <p>&copy; 2025 Deluxe Digital Solutions. All rights reserved.</p>
+            <p>Version 1.7.0 | Last updated: January 2026</p>
+        </footer>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="reviewModal" class="modal-review">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeReviewModal()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <h2 id="reviewModalTitle" data-translatable="shareFeedback">Share Your Feedback</h2>
+            <p id="reviewModalDesc" data-translatable="loveToHear">We'd love to hear your thoughts about DDSFocusPro:</p>
+            <textarea id="reviewInput" placeholder="Type your feedback here..." rows="5" data-translatable-placeholder="typeFeedback"></textarea>
+            <div class="modal-buttons">
+                <button id="reviewSubmitBtn" class="modal-btn submit-btn" onclick="submitUserReview()" data-translatable="submitReview">Submit Review</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script>
+        // ============================================
+        // 🌐 TRANSLATION SYSTEM FOR HELP PAGE
+        // ============================================
+        const helpTranslations = {
+            en: {
+                helpCenterTitle: "DDS Focus Pro Help Center",
+                helpCenterSubtitle: "Get the most out of your time tracking experience",
+                quickStartGuide: "Quick Start Guide",
+                gettingStarted: "Getting Started",
+                learnBasics: "Learn the basics of DDS Focus Pro",
+                workMode: "Work Mode",
+                trackWorkTime: "Track your work time effectively",
+                meetingMode: "Meeting Mode",
+                logMeetings: "Log your meetings seamlessly",
+                screenshots: "Screenshots",
+                understandScreenCapture: "Understand screen capture settings",
+                faqTitle: "Frequently Asked Questions",
+                howStartTracking: "How do I start tracking my work time?",
+                toStartTracking: "To start tracking your work time:",
+                selectProjectStep: "Select a Project from the dropdown menu",
+                chooseTaskStep: "Choose a Task associated with that project",
+                workModeStep: "Make sure you're in Work Mode (the button should be highlighted)",
+                clickStartStep: "Click the START button",
+                timerStartStep: "The timer will begin counting, and screen recording will automatically start",
+                whatHappensFinish: "What happens when I finish a task?",
+                whenClickFinish: "When you click the Finish button:",
+                modalAppear: "A modal will appear asking you to describe what you completed",
+                enterNotes: "Enter detailed notes about your work",
+                clickSubmit: "Click Submit to save your time entry",
+                timesheetSent: "Your timesheet will be automatically sent to the system",
+                screenshotsUploaded: "Screenshots taken during the session will be uploaded",
+                whatIsWorkMode: "What is Work Mode?",
+                workModeDescription: "Work Mode is the primary mode for tracking regular work sessions. When in Work Mode:",
+                timerTracks: "The timer tracks time spent on selected tasks",
+                screenRecordingActive: "Screen recording is active (based on your screenshot interval)",
+                activityLogsCaptured: "Activity logs are captured automatically",
+                idleDetectionEnabled: "Idle detection is enabled to pause the timer when you're away",
+                canSwitchTasks: "Can I switch tasks while the timer is running?",
+                cannotSwitchTasks: "No, you cannot switch tasks while the timer is running. You must:",
+                finishCurrentTask: "Click Finish to complete the current task",
+                enterTaskNotes: "Enter your task completion notes",
+                selectNewProject: "Select a new project and task",
+                clickStartAgain: "Click START again to begin tracking the new task",
+                ensuresAccurate: "This ensures accurate time tracking for each task.",
+                minimumWorkTime: "What is the minimum work time required?",
+                minimumWorkTimeAnswer: "You must work for at least 1 minute before you can finish a task. If you try to finish before 1 minute has elapsed, you'll see a warning message.",
+                howTrackMeeting: "How do I track meeting time?",
+                toTrackMeeting: "To track a meeting:",
+                clickMeetingMode: "Click the Meeting Mode button",
+                selectProjectTask: "Select the project and task related to the meeting",
+                clickStart: "Click START to begin tracking",
+                whenMeetingEnds: "When the meeting ends, click Finish",
+                enterMeetingNotes: "Enter meeting notes describing what was discussed",
+                clickSubmitSave: "Click Submit to save",
+                meetingsWhileWorking: "Can I have meetings while working on a task?",
+                yesMeetingsWhileWorking: "Yes! If you're in Work Mode and need to attend a meeting:",
+                switchMeetingMode: "Switch to Meeting Mode - your work timer will pause",
+                trackMeetingTime: "Track the meeting time",
+                whenFinished: "When finished, enter meeting notes",
+                switchBackWork: "Switch back to Work Mode to resume your work timer",
+                bothSaved: "Both work and meeting notes will be saved when you finish the work session",
+                differenceWorkMeeting: "What's the difference between Work and Meeting modes?",
+                feature: "Feature",
+                purpose: "Purpose",
+                trackIndividualWork: "Track individual work",
+                trackCollaborativeMeetings: "Track collaborative meetings",
+                timer: "Timer",
+                singleUnifiedTimer: "Single unified timer",
+                sameTimer: "Same timer (pauses work when active)",
+                screenRecording: "Screen Recording",
+                yes: "Yes",
+                notes: "Notes",
+                taskCompletionDetails: "Task completion details",
+                meetingDiscussionNotes: "Meeting discussion notes",
+                howScreenRecording: "How does screen recording work?",
+                screenRecordingAuto: "Screen recording automatically starts when you begin tracking time:",
+                screenshotsCaptured: "Screenshots are captured at intervals set by your administrator",
+                intervalShown: "The interval is shown in your dashboard (e.g., \"5 minutes\")",
+                screenshotsUploaded: "Screenshots are automatically uploaded when you finish a task",
+                securelyStored: "All screenshots are securely stored and accessible only to authorized personnel",
+                canSeeInterval: "Can I see my screenshot interval?",
+                intervalDisplayed: "Yes! Your screenshot interval is displayed on the main dashboard under the \"Screenshot Interval\" label. This setting is configured by your system administrator.",
+                whatIfIdle: "What happens if I'm idle during work?",
+                idleDetectionSystem: "The system has idle detection to ensure accurate time tracking:",
+                inactive3Minutes: "If you're inactive for 3 minutes, the system detects you as idle",
+                timerPauses: "The timer automatically pauses",
+                modalNotification: "A modal notification appears",
+                after5Seconds: "After 5 seconds, your work is auto-saved with adjusted time (excluding idle time)",
+                onlyPaidActive: "This ensures you're only paid for active work time",
+                importantNotes: "Important Notes",
+                internetConnectionRequirement: "Internet Connection Requirement",
+                ensureInternetConnection: "Please ensure your internet connection is stable and working properly before starting work.",
+                goodConnectionRequired: "A good internet connection is required for screenshots to upload successfully",
+                timeLogsNeedConnectivity: "Time logs and activity data need connectivity to sync with the server",
+                checkConnection: "Check your connection status before clicking START",
+                connectionIssues: "If you experience connection issues during work, your data may not be saved properly",
+                verifySubmissions: "Always verify that your submissions are successful before logging out",
+                properlyCloseWork: "Properly Close Work Mode After Finishing",
+                alwaysProperlyClose: "Always properly close your work or meeting mode after finishing tasks.",
+                clickFinish: "Click the Finish button to complete your session",
+                enterTaskNotes2: "Enter your task completion notes or meeting details",
+                clickSubmitWait: "Click Submit and wait for confirmation",
+                doNotClose: "Do NOT close the browser or application until submission is complete",
+                incompleteSessions: "Incomplete sessions may result in lost time tracking data",
+                ensureSuccessMessage: "Ensure you see a success message before moving to another task",
+                failureToClose: "Failure to properly close sessions can lead to:",
+                lostScreenshots: "Lost screenshots and activity logs",
+                incompleteTimesheet: "Incomplete timesheet entries",
+                inaccurateCalculations: "Inaccurate work hour calculations",
+                troubleshooting: "Troubleshooting",
+                cannotSelectTask: "I can't select a task. What's wrong?",
+                ifCannotSelectTask: "If you can't select a task, try these steps:",
+                makeSureProject: "Make sure you've selected a Project first",
+                waitTasksLoad: "Wait a moment for tasks to load (you'll see \"Loading tasks...\")",
+                noTasksAppear: "If no tasks appear, the project may not have any tasks assigned",
+                contactManager: "Contact your project manager if tasks should be available",
+                startButtonDisabled: "The START button is disabled. Why?",
+                startDisabledWhen: "The START button is disabled when:",
+                timerRunning: "A timer is already running (work or meeting)",
+                notSelectedBoth: "You haven't selected both a project and task",
+                needFinishFirst: "You need to finish your current session first",
+                completeActivity: "Complete or finish your current activity before starting a new one.",
+                canLogoutWhileRunning: "Can I log out while the timer is running?",
+                cannotLogoutWhileRunning: "No, you cannot log out while a timer is active. This prevents accidental data loss. You must:",
+                clickFinishComplete: "Click Finish to complete your task/meeting",
+                submitNotes: "Submit your notes",
+                thenLogout: "Then you can safely log out",
+                logoutDisabled: "The logout button will be disabled and grayed out when a timer is running.",
+                dataNotSyncing: "My data isn't syncing. What should I do?",
+                ifSyncingIssues: "If you experience syncing issues:",
+                checkInternet: "Check your internet connection immediately",
+                stableConnection: "Make sure you have a stable internet connection before starting work",
+                tryRefreshing: "Try refreshing the page",
+                logoutLogin: "Log out and log back in",
+                clearCache: "Clear your browser cache",
+                contactSupport: "If the issue persists, contact IT support",
+                importantWarning: "Important: Always ensure a good internet connection is available before starting any work session. Poor connectivity can result in lost screenshots, incomplete uploads, and missing timesheet data.",
+                proTips: "Pro Tips",
+                beDescriptive: "Be Descriptive",
+                writeDetailedNotes: "Write detailed notes when finishing tasks. This helps with project tracking and invoicing.",
+                takeBreaks: "Take Breaks",
+                rememberFinish: "Remember to finish your current task before taking breaks. The system will detect extended idle time.",
+                trackEverything: "Track Everything",
+                useMeetingMode: "Use Meeting Mode to track all collaborative time. It counts toward your total logged time.",
+                stayConsistent: "Stay Consistent",
+                alwaysStartStop: "Always start and stop the timer for accurate tracking. Don't forget to submit your notes!",
+                stillNeedHelp: "Still Need Help?",
+                ifNotFoundAnswer: "If you couldn't find the answer you're looking for, please reach out to our support team.",
+                sendFeedback: "Send Feedback",
+                openCRM: "Open CRM",
+                shareFeedback: "Share Your Feedback",
+                loveToHear: "We'd love to hear your thoughts about DDSFocusPro:",
+                typeFeedback: "Type your feedback here...",
+                submitReview: "Submit Review",
+                pleaseEnterFeedback: "Please enter your feedback!",
+                userInfoMissing: "User information is missing. Please log in again.",
+                feedbackSentSuccess: "Feedback sent successfully!",
+                failedSendFeedback: "Failed to send feedback. Please try again.",
+                errorSendingFeedback: "Error occurred while sending feedback."
+            },
+            tr: {
+                helpCenterTitle: "DDS Focus Pro Yardım Merkezi",
+                helpCenterSubtitle: "Zaman takibi deneyiminizden en iyi şekilde yararlanın",
+                quickStartGuide: "Hızlı Başlangıç Kılavuzu",
+                gettingStarted: "Başlangıç",
+                learnBasics: "DDS Focus Pro'nun temellerini öğrenin",
+                workMode: "Çalışma Modu",
+                trackWorkTime: "Çalışma sürenizi etkili bir şekilde takip edin",
+                meetingMode: "Toplantı Modu",
+                logMeetings: "Toplantılarınızı sorunsuz bir şekilde kaydedin",
+                screenshots: "Ekran Görüntüleri",
+                understandScreenCapture: "Ekran yakalama ayarlarını anlayın",
+                faqTitle: "Sık Sorulan Sorular",
+                howStartTracking: "Çalışma süremi nasıl takip etmeye başlarım?",
+                toStartTracking: "Çalışma sürenizi takip etmeye başlamak için:",
+                selectProjectStep: "Açılır menüden bir Proje seçin",
+                chooseTaskStep: "O projeyle ilişkili bir Görev seçin",
+                workModeStep: "Çalışma Modunda olduğunuzdan emin olun (düğme vurgulanmış olmalıdır)",
+                clickStartStep: "BAŞLAT düğmesine tıklayın",
+                timerStartStep: "Zamanlayıcı saymaya başlayacak ve ekran kaydı otomatik olarak başlayacaktır",
+                whatHappensFinish: "Bir görevi bitirdiğimde ne olur?",
+                whenClickFinish: "Bitir düğmesine tıkladığınızda:",
+                modalAppear: "Tamamladığınız işi açıklamanızı isteyen bir pencere görünecektir",
+                enterNotes: "Çalışmanız hakkında detaylı notlar girin",
+                clickSubmit: "Zaman girişinizi kaydetmek için Gönder'e tıklayın",
+                timesheetSent: "Zaman çizelgeniz otomatik olarak sisteme gönderilecektir",
+                screenshotsUploaded: "Oturum sırasında çekilen ekran görüntüleri yüklenecektir",
+                whatIsWorkMode: "Çalışma Modu nedir?",
+                workModeDescription: "Çalışma Modu, düzenli çalışma oturumlarını takip etmek için birincil moddur. Çalışma Modunda:",
+                timerTracks: "Zamanlayıcı seçilen görevlerde harcanan süreyi takip eder",
+                screenRecordingActive: "Ekran kaydı aktif (ekran görüntüsü aralığınıza göre)",
+                activityLogsCaptured: "Aktivite logları otomatik olarak yakalanır",
+                idleDetectionEnabled: "Uzakta olduğunuzda zamanlayıcıyı duraklatmak için boşta algılama etkinleştirilir",
+                canSwitchTasks: "Zamanlayıcı çalışırken görevleri değiştirebilir miyim?",
+                cannotSwitchTasks: "Hayır, zamanlayıcı çalışırken görevleri değiştiremezsiniz. Şunları yapmalısınız:",
+                finishCurrentTask: "Mevcut görevi tamamlamak için Bitir'e tıklayın",
+                enterTaskNotes: "Görev tamamlama notlarınızı girin",
+                selectNewProject: "Yeni bir proje ve görev seçin",
+                clickStartAgain: "Yeni görevi takip etmeye başlamak için tekrar BAŞLAT'a tıklayın",
+                ensuresAccurate: "Bu, her görev için doğru zaman takibi sağlar.",
+                minimumWorkTime: "Gerekli minimum çalışma süresi nedir?",
+                minimumWorkTimeAnswer: "Bir görevi bitirmeden önce en az 1 dakika çalışmalısınız. 1 dakika geçmeden bitirmeye çalışırsanız, bir uyarı mesajı göreceksiniz.",
+                howTrackMeeting: "Toplantı süresini nasıl takip ederim?",
+                toTrackMeeting: "Bir toplantıyı takip etmek için:",
+                clickMeetingMode: "Toplantı Modu düğmesine tıklayın",
+                selectProjectTask: "Toplantıyla ilgili proje ve görevi seçin",
+                clickStart: "Takibe başlamak için BAŞLAT'a tıklayın",
+                whenMeetingEnds: "Toplantı bittiğinde Bitir'e tıklayın",
+                enterMeetingNotes: "Nelerin tartışıldığını açıklayan toplantı notlarını girin",
+                clickSubmitSave: "Kaydetmek için Gönder'e tıklayın",
+                meetingsWhileWorking: "Bir görev üzerinde çalışırken toplantı yapabilir miyim?",
+                yesMeetingsWhileWorking: "Evet! Çalışma Modundaysanız ve bir toplantıya katılmanız gerekiyorsa:",
+                switchMeetingMode: "Toplantı Moduna geçin - çalışma zamanlayıcınız duraklatılacaktır",
+                trackMeetingTime: "Toplantı süresini takip edin",
+                whenFinished: "Bittiğinde toplantı notlarını girin",
+                switchBackWork: "Çalışma zamanlayıcınızı devam ettirmek için Çalışma Moduna geri dönün",
+                bothSaved: "Çalışma oturumunu bitirdiğinizde hem çalışma hem de toplantı notları kaydedilecektir",
+                differenceWorkMeeting: "Çalışma ve Toplantı modları arasındaki fark nedir?",
+                feature: "Özellik",
+                purpose: "Amaç",
+                trackIndividualWork: "Bireysel çalışmayı takip et",
+                trackCollaborativeMeetings: "İşbirlikçi toplantıları takip et",
+                timer: "Zamanlayıcı",
+                singleUnifiedTimer: "Tek birleşik zamanlayıcı",
+                sameTimer: "Aynı zamanlayıcı (aktifken çalışmayı duraklatır)",
+                screenRecording: "Ekran Kaydı",
+                yes: "Evet",
+                notes: "Notlar",
+                taskCompletionDetails: "Görev tamamlama detayları",
+                meetingDiscussionNotes: "Toplantı tartışma notları",
+                howScreenRecording: "Ekran kaydı nasıl çalışır?",
+                screenRecordingAuto: "Zaman takibine başladığınızda ekran kaydı otomatik olarak başlar:",
+                screenshotsCaptured: "Ekran görüntüleri yöneticiniz tarafından belirlenen aralıklarla yakalanır",
+                intervalShown: "Aralık kontrol panelinizde gösterilir (ör. \"5 dakika\")",
+                screenshotsUploaded: "Bir görevi bitirdiğinizde ekran görüntüleri otomatik olarak yüklenir",
+                securelyStored: "Tüm ekran görüntüleri güvenli bir şekilde saklanır ve yalnızca yetkili personel tarafından erişilebilir",
+                canSeeInterval: "Ekran görüntüsü aralığımı görebilir miyim?",
+                intervalDisplayed: "Evet! Ekran görüntüsü aralığınız ana kontrol panelinde \"Ekran Görüntüsü Aralığı\" etiketi altında gösterilir. Bu ayar sistem yöneticiniz tarafından yapılandırılır.",
+                whatIfIdle: "Çalışırken boşta kalırsam ne olur?",
+                idleDetectionSystem: "Sistem, doğru zaman takibi sağlamak için boşta algılama özelliğine sahiptir:",
+                inactive3Minutes: "3 dakika boyunca hareketsizseniz, sistem sizi boşta olarak algılar",
+                timerPauses: "Zamanlayıcı otomatik olarak duraklar",
+                modalNotification: "Bir pencere bildirimi görünür",
+                after5Seconds: "5 saniye sonra, çalışmanız ayarlanmış süreyle otomatik olarak kaydedilir (boşta geçen süre hariç)",
+                onlyPaidActive: "Bu, yalnızca aktif çalışma süresi için ödeme almanızı sağlar",
+                importantNotes: "Önemli Notlar",
+                internetConnectionRequirement: "İnternet Bağlantısı Gereksinimi",
+                ensureInternetConnection: "Lütfen çalışmaya başlamadan önce internet bağlantınızın kararlı ve düzgün çalıştığından emin olun.",
+                goodConnectionRequired: "Ekran görüntülerinin başarıyla yüklenmesi için iyi bir internet bağlantısı gereklidir",
+                timeLogsNeedConnectivity: "Zaman logları ve aktivite verilerinin sunucuyla senkronize olması için bağlantı gereklidir",
+                checkConnection: "BAŞLAT'a tıklamadan önce bağlantı durumunuzu kontrol edin",
+                connectionIssues: "Çalışma sırasında bağlantı sorunları yaşarsanız, verileriniz düzgün kaydedilmeyebilir",
+                verifySubmissions: "Çıkış yapmadan önce gönderimlerinizin başarılı olduğundan her zaman emin olun",
+                properlyCloseWork: "Bitirdikten Sonra Çalışma Modunu Düzgün Kapatma",
+                alwaysProperlyClose: "Görevleri bitirdikten sonra çalışma veya toplantı modunuzu her zaman düzgün bir şekilde kapatın.",
+                clickFinish: "Oturumunuzu tamamlamak için Bitir düğmesine tıklayın",
+                enterTaskNotes2: "Görev tamamlama notlarınızı veya toplantı detaylarınızı girin",
+                clickSubmitWait: "Gönder'e tıklayın ve onay bekleyin",
+                doNotClose: "Gönderim tamamlanana kadar tarayıcıyı veya uygulamayı kapatmayın",
+                incompleteSessions: "Eksik oturumlar zaman takibi verilerinin kaybolmasına neden olabilir",
+                ensureSuccessMessage: "Başka bir göreve geçmeden önce bir başarı mesajı gördüğünüzden emin olun",
+                failureToClose: "Oturumları düzgün kapatmamak şunlara yol açabilir:",
+                lostScreenshots: "Kayıp ekran görüntüleri ve aktivite logları",
+                incompleteTimesheet: "Eksik zaman çizelgesi girişleri",
+                inaccurateCalculations: "Yanlış çalışma saati hesaplamaları",
+                troubleshooting: "Sorun Giderme",
+                cannotSelectTask: "Bir görev seçemiyorum. Sorun nedir?",
+                ifCannotSelectTask: "Bir görev seçemiyorsanız, şu adımları deneyin:",
+                makeSureProject: "Önce bir Proje seçtiğinizden emin olun",
+                waitTasksLoad: "Görevlerin yüklenmesi için bir an bekleyin (\"Görevler yükleniyor...\" mesajını göreceksiniz)",
+                noTasksAppear: "Görev görünmüyorsa, projenin atanmış görevi olmayabilir",
+                contactManager: "Görevler mevcut olması gerekiyorsa proje yöneticinizle iletişime geçin",
+                startButtonDisabled: "BAŞLAT düğmesi devre dışı. Neden?",
+                startDisabledWhen: "BAŞLAT düğmesi şu durumlarda devre dışıdır:",
+                timerRunning: "Zaten çalışan bir zamanlayıcı var (çalışma veya toplantı)",
+                notSelectedBoth: "Hem proje hem de görev seçmediniz",
+                needFinishFirst: "Önce mevcut oturumunuzu bitirmeniz gerekiyor",
+                completeActivity: "Yeni bir şeye başlamadan önce mevcut aktivitenizi tamamlayın veya bitirin.",
+                canLogoutWhileRunning: "Zamanlayıcı çalışırken çıkış yapabilir miyim?",
+                cannotLogoutWhileRunning: "Hayır, zamanlayıcı aktifken çıkış yapamazsınız. Bu, kazara veri kaybını önler. Şunları yapmalısınız:",
+                clickFinishComplete: "Görevinizi/toplantınızı tamamlamak için Bitir'e tıklayın",
+                submitNotes: "Notlarınızı gönderin",
+                thenLogout: "Sonra güvenle çıkış yapabilirsiniz",
+                logoutDisabled: "Zamanlayıcı çalışırken çıkış düğmesi devre dışı bırakılır ve grileştirilir.",
+                dataNotSyncing: "Verilerim senkronize olmuyor. Ne yapmalıyım?",
+                ifSyncingIssues: "Senkronizasyon sorunları yaşıyorsanız:",
+                checkInternet: "Hemen internet bağlantınızı kontrol edin",
+                stableConnection: "Çalışmaya başlamadan önce kararlı bir internet bağlantınız olduğundan emin olun",
+                tryRefreshing: "Sayfayı yenilemeyi deneyin",
+                logoutLogin: "Çıkış yapın ve tekrar giriş yapın",
+                clearCache: "Tarayıcı önbelleğinizi temizleyin",
+                contactSupport: "Sorun devam ederse, BT desteğiyle iletişime geçin",
+                importantWarning: "Önemli: Herhangi bir çalışma oturumuna başlamadan önce her zaman iyi bir internet bağlantısının mevcut olduğundan emin olun. Zayıf bağlantı, kayıp ekran görüntüleri, eksik yüklemeler ve eksik zaman çizelgesi verilerine neden olabilir.",
+                proTips: "Uzman İpuçları",
+                beDescriptive: "Açıklayıcı Olun",
+                writeDetailedNotes: "Görevleri bitirirken detaylı notlar yazın. Bu, proje takibi ve faturalandırma konusunda yardımcı olur.",
+                takeBreaks: "Mola Verin",
+                rememberFinish: "Mola vermeden önce mevcut görevinizi bitirmeyi unutmayın. Sistem uzun süreli boşta kalma süresini algılayacaktır.",
+                trackEverything: "Her Şeyi Takip Edin",
+                useMeetingMode: "Tüm işbirlikçi zamanı takip etmek için Toplantı Modunu kullanın. Toplam kayıtlı sürenize sayılır.",
+                stayConsistent: "Tutarlı Olun",
+                alwaysStartStop: "Doğru takip için zamanlayıcıyı her zaman başlatın ve durdurun. Notlarınızı göndermeyi unutmayın!",
+                stillNeedHelp: "Hala Yardıma mı İhtiyacınız Var?",
+                ifNotFoundAnswer: "Aradığınız cevabı bulamadıysanız, lütfen destek ekibimizle iletişime geçin.",
+                sendFeedback: "Geri Bildirim Gönder",
+                openCRM: "CRM'yi Aç",
+                shareFeedback: "Geri Bildiriminizi Paylaşın",
+                loveToHear: "DDSFocusPro hakkındaki düşüncelerinizi duymak isteriz:",
+                typeFeedback: "Geri bildiriminizi buraya yazın...",
+                submitReview: "Geri Bildirim Gönder",
+                pleaseEnterFeedback: "Lütfen geri bildiriminizi girin!",
+                userInfoMissing: "Kullanıcı bilgileri eksik. Lütfen tekrar giriş yapın.",
+                feedbackSentSuccess: "Geri bildirim başarıyla gönderildi!",
+                failedSendFeedback: "Geri bildirim gönderilemedi. Lütfen tekrar deneyin.",
+                errorSendingFeedback: "Geri bildirim gönderilirken hata oluştu."
+            }
+        };
+
+        function applyHelpLanguage(lang) {
+            if (!lang || !helpTranslations[lang]) {
+                lang = 'en';
+            }
+            const t = helpTranslations[lang] || helpTranslations['en'];
+            
+            console.log('🌐 Applying help page language:', lang);
+            
+            // Update all elements with data-translatable attribute
+            document.querySelectorAll('[data-translatable]').forEach(element => {
+                const key = element.getAttribute('data-translatable');
+                if (t[key]) {
+                    element.textContent = t[key];
+                    console.log(`✅ Translated ${key}: ${t[key]}`);
+                } else {
+                    console.warn(`⚠️ Translation missing for key: ${key}`);
+                }
+            });
+            
+            // Update placeholders
+            document.querySelectorAll('[data-translatable-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-translatable-placeholder');
+                if (t[key]) {
+                    element.placeholder = t[key];
+                }
+            });
+        }
+
+        // Apply language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = sessionStorage.getItem('selectedLanguage') || 'en';
+            applyHelpLanguage(savedLang);
+        });
+
+        // Listen for language changes
+        window.addEventListener('languageChanged', (event) => {
+            applyHelpLanguage(event.detail.language);
+        });
+        
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    if (searchTerm.length > 2) {
+                        item.classList.add('active');
+                    }
+                } else {
+                    item.style.display = 'none';
+                    item.classList.remove('active');
+                }
+            });
+
+            // Show/hide categories based on search
+            document.querySelectorAll('.faq-category').forEach(category => {
+                const visibleItems = category.querySelectorAll('.faq-item[style="display: block"]');
+                category.style.display = visibleItems.length > 0 ? 'block' : 'none';
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    // Smooth scroll with offset
+                    const headerOffset = 20;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Add a highlight animation to the target section
+                    target.style.transition = 'background-color 0.6s ease';
+                    target.style.backgroundColor = '#e8f5e9';
+                    setTimeout(() => {
+                        target.style.backgroundColor = '';
+                    }, 1500);
+                }
+            });
+        });
+
+        // Toast notification function
+        function showToast(message, type = 'success') {
+            Toastify({
+                text: message,
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                backgroundColor: type === 'error' ? "#e74c3c" : "#27ae60",
+                close: true
+            }).showToast();
+        }
+
+        // Review Modal functions
+        function openReviewModal() {
+            const modal = document.getElementById("reviewModal");
+            modal.style.display = "flex";
+            setTimeout(() => {
+                modal.classList.remove('hide');
+                modal.classList.add('show');
+            }, 10);
+        }
+
+        function closeReviewModal() {
+            const modal = document.getElementById("reviewModal");
+            modal.classList.remove('show');
+            modal.classList.add('hide');
+            
+            setTimeout(() => {
+                modal.style.display = "none";
+                modal.classList.remove('hide');
+            }, 300);
+        }
+
+        function submitUserReview() {
+            const reviewText = document.getElementById('reviewInput').value.trim();
+            const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+
+            const lang = sessionStorage.getItem('selectedLanguage') || 'en';
+            const t = helpTranslations[lang] || helpTranslations['en'];
+            
+            if (!reviewText) {
+                showToast(t.pleaseEnterFeedback, 'error');
+                return;
+            }
+
+            if (!user?.email || !user?.firstName) {
+                showToast(t.userInfoMissing, 'error');
+                return;
+            }
+
+            fetch('/submit-feedback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: user.email,
+                    username: `${user.firstName} ${user.lastName || ''}`.trim(),
+                    message: reviewText
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                const lang = sessionStorage.getItem('selectedLanguage') || 'en';
+                const t = helpTranslations[lang] || helpTranslations['en'];
+                
+                if (data.status === 'success') {
+                    showToast(t.feedbackSentSuccess, 'success');
+                    closeReviewModal();
+                    document.getElementById('reviewInput').value = '';
+                } else {
+                    showToast(t.failedSendFeedback, 'error');
+                }
+            })
+            .catch(err => {
+                console.error('Feedback error:', err);
+                const lang = sessionStorage.getItem('selectedLanguage') || 'en';
+                const t = helpTranslations[lang] || helpTranslations['en'];
+                showToast(t.errorSendingFeedback, 'error');
+            });
+        }
+    </script>
+</body>
+</html>

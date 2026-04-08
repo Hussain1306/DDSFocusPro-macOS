@@ -1,0 +1,89 @@
+name: Build macOS DMG
+
+on:
+  push:
+    branches: [main, macos]
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          path: .
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install system dependencies
+        run: |
+          brew install create-dmg
+          brew install pyobjc
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r macos/requirements.txt
+          pip install pyinstaller
+
+      - name: Build Connector
+        run: |
+          cd macos
+          pyinstaller connector.spec --clean --noconfirm
+
+      - name: Create .app bundle
+        run: |
+          cd macos
+          mkdir -p dist/DDSFocusPro.app/Contents/MacOS
+          mkdir -p dist/DDSFocusPro.app/Contents/Resources
+          mkdir -p dist/DDSFocusPro.app/Contents/Frameworks
+          cp -r dist/connector/* dist/DDSFocusPro.app/Contents/MacOS/
+          cp -r templates dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
+          cp -r static dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
+          cp icon.ico dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
+          cp env_example.txt dist/DDSFocusPro.app/Contents/Resources/.env.example 2>/dev/null || true
+          cat > dist/DDSFocusPro.app/Contents/Info.plist << 'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>CFBundleDevelopmentRegion</key><string>English</string>
+              <key>CFBundleExecutable</key><string>connector</string>
+              <key>CFBundleIdentifier</key><string>com.ddsolutions.ddsfocuspro</string>
+              <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+              <key>CFBundleName</key><string>DDS Focus Pro</string>
+              <key>CFBundleDisplayName</key><string>DDS Focus Pro</string>
+              <key>CFBundlePackageType</key><string>APPL</string>
+              <key>CFBundleShortVersionString</key><string>1.7.1</string>
+              <key>CFBundleVersion</key><string>1.7.1</string>
+              <key>LSMinimumSystemVersion</key><string>10.14</string>
+              <key>LSApplicationCategoryType</key><string>public.app-category.productivity</string>
+              <key>NSHumanReadableCopyright</key><string>Copyright 2025 DDS Solutions. All rights reserved.</string>
+              <key>NSPrincipalClass</key><string>NSApplication</string>
+              <key>LSUIElement</key><false/>
+          </dict>
+          </plist>
+          PLIST
+
+      - name: Create DMG
+        run: |
+          cd macos
+          create-dmg \
+            --volname "DDS Focus Pro" \
+            --window-pos 200 120 \
+            --size 500 \
+            "dist/DDSFocusPro-macOS-v1.7.1.dmg" \
+            "dist/DDSFocusPro.app"
+
+      - name: Upload DMG artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "DDSFocusPro-macOS-dmg"
+          path: macos/dist/DDSFocusPro-macOS-v1.7.1.dmg
+          retention-days: 30

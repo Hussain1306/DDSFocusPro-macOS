@@ -1,0 +1,27 @@
+# DDS Focus Pro - Environment Configuration Template
+# Copy this to .env and fill in your values
+
+# Database
+DB_HOST=92.113.22.65
+DB_USER=u906714182_sqlrrefdvdv
+DB_PASSWORD=your_password_here
+DB_NAME=u906714182_sqlrrefdvdv
+DB_PORT=3306
+
+# AWS S3
+AWS_ACCESS_KEY_ID=AKIARSU6EUUWMQ5I2JWC
+AWS_SECRET_ACCESS_KEY=your_secret_key_here
+S3_REGION=eu-central-1
+
+# Mail (optional)
+MAIL_SERVER=smtp.example.com
+MAIL_PORT=587
+MAIL_USE_TLS=True
+MAIL_USERNAME=your_email@example.com
+MAIL_PASSWORD=your_password
+
+# Auth
+AUTH_TOKEN=your_auth_token_here
+
+# OpenAI (optional - for AI features)
+OPENAI_API_KEY=your_openai_key_here

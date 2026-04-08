@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusPRO - Login</title>
+  <link rel="icon" type="image/x-icon" href="./icon.ico">
+  <link rel="stylesheet" href="./static/login.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png"
+    href="https://dxdglobal.com/wp-content/uploads/2024/12/cropped-Favicon-1-180x180.webp">
+</head>
+
+<body onload="checkDatabase()">
+  <div class="login-wrapper">
+    <!-- Left Panel - Branding -->
+    <div class="brand-panel">
+      <div class="brand-content">
+        <div class="logo-container">
+          <img src="./static/dds-logo.png" alt="DDS Logo" class="logo">
+        </div>
+        <h1 class="brand-title">DeluxeTime</h1>
+        <p class="brand-tagline">Automated Employee Monitoring Software</p>
+
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span>AI-Powered Productivity Tracking</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span>Real-time Activity Monitoring</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span>Smart Distraction Detection</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-decoration">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+      </div>
+    </div>
+
+    <!-- Right Panel - Login Form -->
+    <div class="login-panel">
+      <div class="login-container">
+        <div class="login-header">
+          <h2 class="login-title" data-translatable="welcomeBack">Welcome Back</h2>
+          <p class="login-subtitle" data-translatable="signInSubtitle">Sign in to continue to your dashboard</p>
+        </div>
+
+        <form class="login-form" onsubmit="event.preventDefault(); handleLogin();">
+          <div class="input-group">
+            <label for="username" class="input-label" data-translatable="emailAddress">Email Address</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              <input type="text" class="input-field" placeholder="Enter your email" id="username"
+                autocomplete="username" data-translatable-placeholder="enterEmail" />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="password" class="input-label" data-translatable="password">Password</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0110 0v4" />
+              </svg>
+              <input type="password" class="input-field" placeholder="Enter your password" id="password"
+                autocomplete="current-password" data-translatable-placeholder="enterPassword" />
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="checkbox-label">
+              <input type="checkbox" id="rememberMe" />
+              <span class="checkmark"></span>
+              <span id="rememberMeLabel">Remember me</span>
+            </label>
+            <a href="https://crm.deluxebilisim.com/admin/authentication/forgot_password" target="_blank"
+              rel="noopener noreferrer" class="forgot-password" data-translatable="forgotPassword">
+              Forgot Password?
+            </a>
+          </div>
+
+          <button type="submit" class="login-button" id="loginBtn">
+            <span class="btn-text" data-translatable="signIn">Sign In</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+        </form>
+
+        <div class="login-footer">
+          <div class="language-selector">
+            <div class="custom-select" id="customLanguageSelect">
+              <div class="select-trigger" onclick="toggleDropdown()">
+                <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                </svg>
+                <span class="select-value" id="selectedLanguage">English</span>
+                <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </div>
+              <div class="select-dropdown" id="languageDropdown">
+                <div class="select-option" data-value="en" onclick="selectLanguage('en', 'English')">
+                  <img src="./static/images/uk-flag.svg" alt="EN" class="flag-icon" onerror="this.style.display='none'">
+                  <span>English</span>
+                  <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M5 12l5 5L20 7" />
+                  </svg>
+                </div>
+                <div class="select-option" data-value="tr" onclick="selectLanguage('tr', 'Türkçe')">
+                  <img src="./static/images/turkish-flag.svg" alt="TR" class="flag-icon"
+                    onerror="this.style.display='none'">
+                  <span>Türkçe</span>
+                  <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M5 12l5 5L20 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <!-- Hidden select for form compatibility -->
+            <select id="languageSelector" style="display:none;">
+              <option value="en">English</option>
+              <option value="tr">Türkçe</option>
+            </select>
+          </div>
+          <div class="version">v1.7.0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden Staff Data (for functionality) -->
+  <div class="staff-data" style="display: none;">
+    <h3>Staff Data:</h3>
+    <ul id="staffList"></ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <script>
+    // Utility functions
+    function darkenColor(color, percent) {
+      const num = parseInt(color.replace("#", ""), 16);
+      const amt = Math.round(2.55 * percent);
+      const R = (num >> 16) - amt;
+      const G = (num >> 8 & 0x00FF) - amt;
+      const B = (num & 0x0000FF) - amt;
+      return "#" + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
+        (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
+        (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+    }
+
+    function lightenColor(color, percent) {
+      const num = parseInt(color.replace("#", ""), 16);
+      const amt = Math.round(2.55 * percent);
+      const R = (num >> 16) + amt;
+      const G = (num >> 8 & 0x00FF) + amt;
+      const B = (num & 0x0000FF) + amt;
+      return "#" + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
+        (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
+        (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+    }
+
+    let staffData = [];
+
+    function fetchStaffData() {
+      fetch('/get-staff-data')
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            console.log("Staff Data:", data.staff_data);
+            staffData = data.staff_data;
+            const staffList = document.getElementById('staffList');
+            staffList.innerHTML = '';
+            data.staff_data.forEach(staff => {
+              const listItem = document.createElement('li');
+              listItem.textContent = `${staff.name} - ${staff.position}`;
+              staffList.appendChild(listItem);
+            });
+          } else {
+            console.error("Failed to fetch staff data:", data.message);
+          }
+        })
+        .catch(error => {
+          console.error("Error fetching staff data:", error);
+        });
+    }
+
+    function checkDatabase() {
+      fetch('/check-db-connection')
+        .then(response => response.json())
+        .then(data => {
+          console.log("Database connection check response:", data);
+          if (data.status === 'success') {
+            Toastify({
+              text: window.currentTranslation?.loginPage || "Connected to server",
+              backgroundColor: "#006039",
+              duration: 3000,
+              gravity: "top",
+              position: "right",
+              style: { borderRadius: "8px", fontFamily: "'Plus Jakarta Sans', sans-serif" }
+            }).showToast();
+          } else {
+            Toastify({
+              text: `Error: ${data.message}`,
+              backgroundColor: "#dc3545",
+              duration: 3000,
+              gravity: "top",
+              position: "right",
+              style: { borderRadius: "8px", fontFamily: "'Plus Jakarta Sans', sans-serif" }
+            }).showToast();
+          }
+        })
+        .catch(() => {
+          Toastify({
+            text: window.currentTranslation?.dbConnectionError || "Error checking database connection.",
+            backgroundColor: "#dc3545",
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            style: { borderRadius: "8px", fontFamily: "'Plus Jakarta Sans', sans-serif" }
+          }).showToast();
+        });
+    }
+
+    const translations = {
+      en: {
+        title: "Automated Employee Monitoring Software",
+        subtitle: "Machine learning-based productivity & distraction detection",
+        welcomeTitle: "Welcome Back",
+        welcomeSubtitle: "Sign in to continue to your dashboard",
+        emailLabel: "Email Address",
+        usernamePlaceholder: "Enter your email",
+        passwordLabel: "Password",
+        passwordPlaceholder: "Enter your password",
+        rememberMe: "Remember me",
+        forgotPassword: "Forgot Password?",
+        loginButton: "Sign In",
+        version: "v1.7.0",
+        enterCredentials: "Please enter your email",
+        emailNotFound: "Wrong email address. Please check your email.",
+        loginSuccessful: "Login successful!",
+        invalidPassword: "Wrong password. Please try again.",
+        dbConnectionError: "Error checking database connection.",
+        loginPage: "Connected to server",
+        feature1: "AI-Powered Productivity Tracking",
+        feature2: "Real-time Activity Monitoring",
+        feature3: "Smart Distraction Detection"
+      },
+      tr: {
+        title: "İş Emri Takip Yazılımı",
+        subtitle: " ",
+        welcomeTitle: "Hoş Geldiniz",
+        welcomeSubtitle: "Panele erişmek için giriş yapın",
+        emailLabel: "E-posta Adresi",
+        usernamePlaceholder: "E-posta adresinizi girin",
+        passwordLabel: "Şifre",
+        passwordPlaceholder: "Şifrenizi girin",
+        rememberMe: "Beni hatırla",
+        forgotPassword: "Şifremi Unuttum?",
+        loginButton: "Giriş Yap",
+        version: "v1.7.0",
+        enterCredentials: "Lütfen e-postanızı girin",
+        emailNotFound: "Yanlış e-posta adresi. Lütfen e-postanızı kontrol edin.",
+        loginSuccessful: "Giriş başarılı!",
+        invalidPassword: "Yanlış şifre. Lütfen tekrar deneyin.",
+        dbConnectionError: "Veritabanı bağlantısı kontrol edilirken hata oluştu.",
+        loginPage: "Sunucuya bağlandı",
+        feature1: "Yapay Zeka Destekli Verimlilik Takibi",
+        feature2: "Gerçek Zamanlı Aktivite İzleme",
+        feature3: "Akıllı Dikkat Dağınıklığı Tespiti"
+      }
+    };
+
+    function changeLanguage() {
+      const selectedLanguage = document.getElementById("languageSelector").value;
+      sessionStorage.setItem('selectedLanguage', selectedLanguage);
+      const translation = translations[selectedLanguage];
+
+      document.querySelector(".login-title").textContent = translation.welcomeTitle;
+      document.querySelector(".login-subtitle").textContent = translation.welcomeSubtitle;
+      document.querySelector(".brand-tagline").textContent = translation.title;
+      document.querySelector('label[for="username"]').textContent = translation.emailLabel;
+      document.querySelector('label[for="password"]').textContent = translation.passwordLabel;
+      document.getElementById("username").placeholder = translation.usernamePlaceholder;
+      document.getElementById("password").placeholder = translation.passwordPlaceholder;
+      document.querySelector(".forgot-password").textContent = translation.forgotPassword;
+      document.querySelector(".btn-text").textContent = translation.loginButton;
+      document.querySelector(".version").textContent = translation.version;
+      document.getElementById("rememberMeLabel").textContent = translation.rememberMe;
+
+      const features = document.querySelectorAll(".feature-item span");
+      if (features.length >= 3) {
+        features[0].textContent = translation.feature1;
+        features[1].textContent = translation.feature2;
+        features[2].textContent = translation.feature3;
+      }
+
+      window.currentTranslation = translation;
+    }
+
+    async function handleLogin() {
+      const username = document.getElementById('username').value;
+      const loginBtn = document.getElementById('loginBtn');
+
+      if (!username) {
+        Toastify({
+          text: window.currentTranslation?.enterCredentials || "Please enter your email",
+          backgroundColor: "#dc3545",
+          duration: 3000,
+          gravity: "top",
+          position: "right",
+          style: { borderRadius: "8px", fontFamily: "'Plus Jakarta Sans', sans-serif" }
+        }).showToast();
+        return;
+      }
+
+      // Add loading state
+      loginBtn.classList.add('loading');
+
+      const user = staffData.find(staff => staff.email === username);
+      if (!user) {
+        loginBtn.classList.remove('loading');
+        Toastify({
+          text: window.currentTranslation?.emailNotFound || "Wrong email address. Please check your email.",
+          backgroundColor: "#dc3545",
+          duration: 3000,
+          gravity: "top",
+          position: "right",
+          style: { borderRadius: "8px", fontFamily: "'Plus Jakarta Sans', sans-serif" }
+        }).showToast();
+        return;
+      }
+
+      Toastify({
+        text: window.currentTranslation?.loginSuccessful || "Login successful!",
+        backgroundColor: "#006039",
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        style: { borderRadius: "8px", fontFamily: "'Plus Jakarta Sans', sans-serif" }
+      }).showToast();
+
+      sessionStorage.setItem('user', JSON.stringify({
+        firstName: user.firstname,
+        lastName: user.lastname,
+        profileImage: user.profile_image,
+        email: user.email,
+        position: user.position,
+        staffid: user.staffid
+      }));
+
+      if (document.getElementById("rememberMe").checked) {
+        localStorage.setItem("savedUsername", username);
+        localStorage.setItem("rememberMe", "true");
+      } else {
+        localStorage.removeItem("savedUsername");
+        localStorage.setItem("rememberMe", "false");
+      }
+
+      await createDailyLogFile(user.email, user.staffid);
+      localStorage.setItem("loginTime", Date.now());
+
+      setTimeout(() => {
+        window.location.href = 'client';
+      }, 500);
+    }
+
+    // Custom Dropdown Functions
+    function toggleDropdown() {
+      const dropdown = document.getElementById('languageDropdown');
+      const customSelect = document.getElementById('customLanguageSelect');
+      dropdown.classList.toggle('open');
+      customSelect.classList.toggle('open');
+    }
+
+    function selectLanguage(value, text) {
+      document.getElementById('selectedLanguage').textContent = text;
+      document.getElementById('languageSelector').value = value;
+
+      // Update active state
+      document.querySelectorAll('.select-option').forEach(opt => {
+        opt.classList.remove('selected');
+        if (opt.dataset.value === value) {
+          opt.classList.add('selected');
+        }
+      });
+
+      // Close dropdown
+      document.getElementById('languageDropdown').classList.remove('open');
+      document.getElementById('customLanguageSelect').classList.remove('open');
+
+      // Save language to session storage
+      sessionStorage.setItem('selectedLanguage', value);
+      
+      // Apply translations
+      if (typeof applyLoginLanguage === 'function') {
+        applyLoginLanguage(value);
+      }
+      
+      // Dispatch event for other scripts
+      window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: value } }));
+      
+      // Trigger language change
+      changeLanguage();
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+      const customSelect = document.getElementById('customLanguageSelect');
+      if (customSelect && !customSelect.contains(e.target)) {
+        document.getElementById('languageDropdown').classList.remove('open');
+        customSelect.classList.remove('open');
+      }
+    });
+
+    window.onload = function () {
+      checkDatabase();
+      fetchStaffData();
+
+      let defaultLang = sessionStorage.getItem('selectedLanguage') || 'tr';
+      document.getElementById("languageSelector").value = defaultLang;
+
+      // Set custom dropdown initial value
+      const langText = defaultLang === 'tr' ? 'Türkçe' : 'English';
+      document.getElementById('selectedLanguage').textContent = langText;
+      document.querySelectorAll('.select-option').forEach(opt => {
+        opt.classList.remove('selected');
+        if (opt.dataset.value === defaultLang) {
+          opt.classList.add('selected');
+        }
+      });
+
+      changeLanguage();
+
+      const savedUsername = localStorage.getItem("savedUsername");
+      const rememberMe = localStorage.getItem("rememberMe");
+
+      if (rememberMe === "true") {
+        document.getElementById("username").value = savedUsername || '';
+        document.getElementById("rememberMe").checked = true;
+      }
+    };
+
+    async function createDailyLogFile(email, staffId) {
+      try {
+        const loginData = {
+          email: email,
+          staff_id: staffId,
+          action: 'login',
+          timestamp: new Date().toISOString(),
+          date: new Date().toISOString().split('T')[0]
+        };
+
+        const response = await fetch('/create_daily_log_file', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(loginData)
+        });
+
+        const result = await response.json();
+        if (result.status === 'success') {
+          console.log('Daily log file created:', result.s3_url);
+        } else {
+          console.error('Failed to create daily log file:', result.message);
+        }
+      } catch (error) {
+        console.error('Error creating daily log file:', error);
+      }
+    }
+  </script>
+</body>
+
+</html>

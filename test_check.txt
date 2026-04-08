@@ -1,0 +1,28 @@
+﻿=== PORT CHECK ===
+
+  UDP    0.0.0.0:50001          *:*                                    2532
+
+
+
+=== EMERGENCY LOG (last 20 lines) ===
+[2026-03-18 15:47:09] Script path: C:\Users\HP\AppData\Local\Temp\_MEI139562\app.py
+[2026-03-18 15:47:09] Frozen status: True
+[2026-03-18 15:47:09] Configuring stdout/stderr...
+[2026-03-18 15:47:09] stdout/stderr configuration successful
+[2026-03-18 15:47:09] About to create folders...
+[2026-03-18 15:47:09] Creating required folders...
+[2026-03-18 15:47:09] Folders created successfully
+[2026-03-18 15:47:09] Starting imports...
+[2026-03-18 15:47:09] urllib.parse imported
+[2026-03-18 15:47:13] flask_mail imported
+[2026-03-18 15:47:23] moduller.tracker imported
+[2026-03-18 15:47:23] moduller.moduller.active_window_tracker imported
+[2026-03-18 15:47:23] moduller.s3_uploader imported
+[2026-03-18 15:47:23] flask imported
+[2026-03-18 15:47:23] flask_cors imported
+[2026-03-18 15:47:23] requests imported
+[2026-03-18 15:47:23] logging imported
+[2026-03-18 15:47:23] datetime imported
+[2026-03-18 15:47:23] dotenv imported
+[2026-03-18 15:47:24] veritabani_yoneticisi imported
+

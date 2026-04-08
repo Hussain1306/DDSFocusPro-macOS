@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Logs Reports Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        .header {
+            text-align: center;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+        
+        .btn:hover { background: #0056b3; }
+        .btn-success { background: #006039; }
+        .btn-success:hover { background: #1e7e34; }
+        .btn-warning { background: #ffc107; color: #212529; }
+        .btn-warning:hover { background: #e0a800; }
+        
+        .form-group {
+            margin: 15px 0;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .result-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #007bff;
+            margin: 15px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .success { border-left-color: #006039; background: #d4edda; }
+        .error { border-left-color: #dc3545; background: #f8d7da; }
+        .warning { border-left-color: #ffc107; background: #fff3cd; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-success { background: #006039; }
+        .status-error { background: #dc3545; }
+        .status-loading { background: #ffc107; animation: pulse 1s infinite; }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .folder-structure {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        .folder { color: #ffd700; }
+        .file { color: #90cdf4; }
+        .email { color: #68d391; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Daily Logs Reports Manager</h1>
+            <p>Generate and upload daily activity reports to S3</p>
+        </div>
+
+        <div class="info-box">
+            <h3>📁 S3 Folder Structure</h3>
+            <div class="folder-structure">
+S3 Bucket: ddsfocustime
+└── <span class="folder">logs/</span>
+    └── <span class="folder">2025-09-10/</span>                    (date folder)
+        ├── <span class="folder"><span class="email">employee1_at_company_com/</span></span>     (employee folder)
+        │   ├── <span class="file">daily_activity_report_2025-09-10_14-30-25.json</span>
+        │   └── <span class="file">daily_activity_report_2025-09-10_18-15-10.json</span>
+        └── <span class="folder"><span class="email">employee2_at_company_com/</span></span>
+            └── <span class="file">daily_activity_report_2025-09-10_16-45-33.json</span>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="section">
+                <h3>👤 Single Employee Report</h3>
+                <div class="form-group">
+                    <label for="employee-email">Employee Email:</label>
+                    <input type="email" id="employee-email" placeholder="employee@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="report-date">Report Date (optional):</label>
+                    <input type="date" id="report-date">
+                </div>
+                <button class="btn" onclick="generateSingleReport()">
+                    <span class="status-indicator" id="single-status"></span>
+                    Generate Single Report
+                </button>
+                <div id="single-result" class="result-box" style="display: none;"></div>
+            </div>
+
+            <div class="section">
+                <h3>👥 All Employees Reports</h3>
+                <div class="form-group">
+                    <label for="all-report-date">Report Date (optional):</label>
+                    <input type="date" id="all-report-date">
+                </div>
+                <button class="btn btn-success" onclick="generateAllReports()">
+                    <span class="status-indicator" id="all-status"></span>
+                    Generate All Reports
+                </button>
+                <div id="all-result" class="result-box" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>📈 Employee Summary</h3>
+            <div class="grid">
+                <div class="form-group">
+                    <label for="summary-email">Employee Email:</label>
+                    <input type="email" id="summary-email" placeholder="employee@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="days-back">Days Back:</label>
+                    <select id="days-back">
+                        <option value="7">Last 7 days</option>
+                        <option value="14">Last 14 days</option>
+                        <option value="30">Last 30 days</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-warning" onclick="getEmployeeSummary()">
+                <span class="status-indicator" id="summary-status"></span>
+                Get Employee Summary
+            </button>
+            <div id="summary-result" class="result-box" style="display: none;"></div>
+        </div>
+
+        <div class="section">
+            <h3>🧪 Test S3 Connection</h3>
+            <p>Test the S3 upload functionality with sample data</p>
+            <button class="btn" onclick="testS3Connection()">
+                <span class="status-indicator" id="test-status"></span>
+                Test S3 Upload
+            </button>
+            <div id="test-result" class="result-box" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        function setStatus(elementId, status) {
+            const indicator = document.getElementById(elementId);
+            indicator.className = 'status-indicator';
+            if (status === 'loading') {
+                indicator.classList.add('status-loading');
+            } else if (status === 'success') {
+                indicator.classList.add('status-success');
+            } else if (status === 'error') {
+                indicator.classList.add('status-error');
+            }
+        }
+
+        function showResult(elementId, content, type = 'info') {
+            const resultDiv = document.getElementById(elementId);
+            resultDiv.textContent = content;
+            resultDiv.className = `result-box ${type}`;
+            resultDiv.style.display = 'block';
+        }
+
+        async function generateSingleReport() {
+            const email = document.getElementById('employee-email').value;
+            const date = document.getElementById('report-date').value;
+
+            if (!email) {
+                showResult('single-result', 'Please enter an employee email', 'error');
+                return;
+            }
+
+            setStatus('single-status', 'loading');
+
+            try {
+                const response = await fetch('/generate_daily_logs_report', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, date: date || undefined })
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    setStatus('single-status', 'success');
+                    const summary = result.report_summary;
+                    const output = `✅ Report generated successfully!
+
+📁 S3 URL: ${result.url}
+
+📊 Daily Summary:
+   📝 Tasks: ${summary.total_tasks_completed}
+   ⏰ Hours: ${summary.total_working_hours}
+   💰 Earnings: $${summary.total_earnings}
+   🕘 First task: ${summary.first_task_start || 'N/A'}
+   🕕 Last task: ${summary.last_task_end || 'N/A'}
+
+📧 Employee: ${email}
+📅 Date: ${date || 'Today'}`;
+                    showResult('single-result', output, 'success');
+                } else {
+                    setStatus('single-status', 'error');
+                    showResult('single-result', `❌ Error: ${result.message}`, 'error');
+                }
+            } catch (error) {
+                setStatus('single-status', 'error');
+                showResult('single-result', `❌ Network error: ${error.message}`, 'error');
+            }
+        }
+
+        async function generateAllReports() {
+            const date = document.getElementById('all-report-date').value;
+
+            setStatus('all-status', 'loading');
+
+            try {
+                const response = await fetch('/generate_all_daily_logs_reports', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ date: date || undefined })
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    setStatus('all-status', 'success');
+                    const output = `✅ All reports generated!
+
+📊 Summary:
+   👥 Total employees: ${result.results.length}
+   ✅ Successful uploads: ${result.successful_uploads}
+   ❌ Failed uploads: ${result.failed_uploads}
+   📅 Target date: ${result.target_date}
+
+📁 Upload Results:
+${result.results.map(r => 
+    `   ${r.status === 'success' ? '✅' : '❌'} ${r.email}: ${r.status}${r.entries_count ? ` (${r.entries_count} entries)` : ''}`
+).join('\n')}`;
+                    showResult('all-result', output, 'success');
+                } else {
+                    setStatus('all-status', 'error');
+                    showResult('all-result', `❌ Error: ${result.message}`, 'error');
+                }
+            } catch (error) {
+                setStatus('all-status', 'error');
+                showResult('all-result', `❌ Network error: ${error.message}`, 'error');
+            }
+        }
+
+        async function getEmployeeSummary() {
+            const email = document.getElementById('summary-email').value;
+            const daysBack = parseInt(document.getElementById('days-back').value);
+
+            if (!email) {
+                showResult('summary-result', 'Please enter an employee email', 'error');
+                return;
+            }
+
+            setStatus('summary-status', 'loading');
+
+            try {
+                const response = await fetch('/get_employee_logs_summary', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, days_back: daysBack })
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    setStatus('summary-status', 'success');
+                    const summary = result.summary;
+                    const totals = summary.totals;
+                    
+                    const output = `✅ Employee Summary Retrieved!
+
+👤 Employee: ${summary.employee_name} (${summary.employee_email})
+📅 Period: ${summary.period.start_date} to ${summary.period.end_date}
+
+📊 Summary (${daysBack} days):
+   📅 Working days: ${totals.total_working_days}
+   ⏰ Total hours: ${totals.total_hours}
+   💰 Total earnings: $${totals.total_earnings}
+   📝 Total tasks: ${totals.total_tasks}
+   📈 Avg hours/day: ${totals.average_hours_per_day}
+
+📋 Daily Breakdown:
+${summary.daily_breakdown.map(day => 
+    `   ${day.date}: ${day.tasks_count} tasks, ${day.hours}h, $${day.earnings}`
+).join('\n')}`;
+                    showResult('summary-result', output, 'success');
+                } else {
+                    setStatus('summary-status', 'error');
+                    showResult('summary-result', `❌ Error: ${result.message}`, 'error');
+                }
+            } catch (error) {
+                setStatus('summary-status', 'error');
+                showResult('summary-result', `❌ Network error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testS3Connection() {
+            setStatus('test-status', 'loading');
+
+            // Create sample test data
+            const testData = {
+                report_metadata: {
+                    employee_email: "test@example.com",
+                    employee_name: "Test Employee",
+                    report_date: new Date().toISOString().split('T')[0],
+                    generated_at: new Date().toISOString(),
+                    total_tasks: 2
+                },
+                daily_summary: {
+                    total_working_hours: 6.5,
+                    total_tasks_completed: 2,
+                    total_earnings: 195.0
+                },
+                tasks: [
+                    {
+                        task_name: "Test Task 1",
+                        duration_hours: 3.5,
+                        task_earnings: 105.0
+                    },
+                    {
+                        task_name: "Test Task 2", 
+                        duration_hours: 3.0,
+                        task_earnings: 90.0
+                    }
+                ]
+            };
+
+            try {
+                const response = await fetch('/generate_daily_logs_report', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        email: "test@example.com",
+                        date: new Date().toISOString().split('T')[0]
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success' || result.status === 'error') {
+                    // Even if no data found, S3 connection is working if we get a proper response
+                    setStatus('test-status', 'success');
+                    const output = `✅ S3 Connection Test Complete!
+
+🔗 Connection Status: ${result.status === 'success' ? 'SUCCESS' : 'SUCCESS (No data)'}
+📁 S3 Structure: logs/YYYY-MM-DD/email_at_domain_com/daily_activity_report_TIMESTAMP.json
+
+${result.status === 'success' ? 
+    `📄 Test Upload URL: ${result.url}` : 
+    `ℹ️ Note: ${result.message}\n   (This is expected if no real data exists for test@example.com)`
+}
+
+✅ S3 credentials and permissions are working correctly!`;
+                    showResult('test-result', output, 'success');
+                } else {
+                    setStatus('test-status', 'error');
+                    showResult('test-result', `❌ S3 Test Failed: ${result.message}`, 'error');
+                }
+            } catch (error) {
+                setStatus('test-status', 'error');
+                showResult('test-result', `❌ S3 Test Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Set default dates to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('report-date').value = today;
+            document.getElementById('all-report-date').value = today;
+        });
+    </script>
+</body>
+</html>

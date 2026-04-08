@@ -1,0 +1,1945 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DDS-FocusPro 1.7.0</title>
+
+  <!-- Main Application Styles -->
+  <link rel="stylesheet" href="../static/client.css" />
+  <link rel="stylesheet" href="../static/buttons.css" />
+  <link rel="stylesheet" href="../static/toast.css" />
+
+  <!-- External Libraries -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png"
+    href="https://dxdglobal.com/wp-content/uploads/2024/12/cropped-Favicon-1-180x180.webp">
+
+</head>
+
+<body>
+  <!-- Center Arrow Drawer Button -->
+  <button class="drawer-arrow-btn" id="drawerArrowBtn" onclick="toggleDrawer()" aria-label="Toggle navigation menu">
+    <span class="arrow-icon">&#9654;</span>
+  </button>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <figure>
+          <img src="./static/dds-logo.png" alt="DDS Logo" width="113px" height="auto" style="width: 113px !important;">
+        </figure>
+      </div>
+      <div class="user-controls">
+        <!-- Skeleton Loader -->
+        <div id="headerSkeletonLoader" class="skeleton-loader">
+          <div class="skeleton-avatar"></div>
+          <div class="skeleton-text"></div>
+          <div class="skeleton-button skeleton-dropdown"></div>
+          <div class="skeleton-button"></div>
+        </div>
+
+        <!-- Actual Content (Initially Hidden) -->
+        <div id="headerActualContent" style="display: none;">
+          <img id="profileImage" src="https://crm.deluxebilisim.com/assets/images/user_placeholder.png">
+          <span id="displayUserName" style="margin-right: 10px;">Loading ...</span>
+
+          <!-- Theme Toggle Button -->
+          <!-- <button class="theme-toggle-client" id="themeToggleClient" onclick="toggleClientTheme()" aria-label="Toggle theme">
+              <span class="theme-icon sun-icon">â˜€ï¸</span>
+              <span class="theme-icon moon-icon">ðŸŒ™</span>
+            </button> -->
+
+          <!-- Language Dropdown -->
+          <div class="language-dropdown">
+            <button class="language-btn" onclick="toggleLanguageDropdown()">
+              <span id="currentLanguage">Select Language</span>
+              <span class="dropdown-arrow">&#9660;</span>
+            </button>
+
+            <!-- Language Dropdown Content -->
+
+            <div class="language-dropdown-content" id="languageDropdown">
+              <div class="language-option" id="option-tr" onclick="selectLanguage('tr')">
+                <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
+                  text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
+                  clip-rule="evenodd" viewBox="0 0 512 356.18">
+                  <g fill-rule="nonzero">
+                    <path fill="#E30A17"
+                      d="M28.137 0H483.86C499.337 0 512 12.663 512 28.14v299.9c0 15.477-12.663 28.14-28.14 28.14H28.137C12.663 356.18 0 343.517 0 328.04V28.14C0 12.663 12.663 0 28.137 0z" />
+                    <path fill="#fff"
+                      d="M253.365 130.516c-15.783-24.923-43.598-41.473-75.281-41.473-49.179 0-89.047 39.868-89.047 89.047 0 49.179 39.868 89.047 89.047 89.047 31.684 0 59.498-16.55 75.282-41.475-13.042 14.526-31.963 23.665-53.021 23.665-39.342 0-71.237-31.893-71.237-71.237 0-39.344 31.895-71.237 71.237-71.237 21.058 0 39.978 9.138 53.02 23.663zm-4.785 47.574l80.543 26.169-49.778-68.514v84.688l49.778-68.514-80.543 26.171z" />
+                  </g>
+                </svg>
+                <span>Türkçe</span>
+              </div>
+              <div class="language-option" id="option-en" onclick="selectLanguage('en')">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.2 38.4"
+                  style="enable-background:new 0 0 55.2 38.4" xml:space="preserve">
+                  <style type="text/css">
+                    .st0 {
+                      fill: #FEFEFE;
+                    }
+
+                    .st1 {
+                      fill: #C8102E;
+                    }
+
+                    .st2 {
+                      fill: #012169;
+                    }
+                  </style>
+                  <g>
+                    <path class="st0"
+                      d="M2.87,38.4h49.46c1.59-0.09,2.87-1.42,2.87-3.03V3.03c0-1.66-1.35-3.02-3.01-3.03H3.01 C1.35,0.01,0,1.37,0,3.03v32.33C0,36.98,1.28,38.31,2.87,38.4L2.87,38.4z" />
+                    <polygon class="st1"
+                      points="23.74,23.03 23.74,38.4 31.42,38.4 31.42,23.03 55.2,23.03 55.2,15.35 31.42,15.35 31.42,0 23.74,0 23.74,15.35 0,15.35 0,23.03 23.74,23.03" />
+                    <path class="st2" d="M33.98,12.43V0h18.23c1.26,0.02,2.34,0.81,2.78,1.92L33.98,12.43L33.98,12.43z" />
+                    <path class="st2"
+                      d="M33.98,25.97V38.4h18.35c1.21-0.07,2.23-0.85,2.66-1.92L33.98,25.97L33.98,25.97z" />
+                    <path class="st2"
+                      d="M21.18,25.97V38.4H2.87c-1.21-0.07-2.24-0.85-2.66-1.94L21.18,25.97L21.18,25.97z" />
+                    <path class="st2" d="M21.18,12.43V0H2.99C1.73,0.02,0.64,0.82,0.21,1.94L21.18,12.43L21.18,12.43z" />
+                    <polygon class="st2" points="0,12.8 7.65,12.8 0,8.97 0,12.8" />
+                    <polygon class="st2" points="55.2,12.8 47.51,12.8 55.2,8.95 55.2,12.8" />
+                    <polygon class="st2" points="55.2,25.6 47.51,25.6 55.2,29.45 55.2,25.6" />
+                    <polygon class="st2" points="0,25.6 7.65,25.6 0,29.43 0,25.6" />
+                    <polygon class="st1" points="55.2,3.25 36.15,12.8 40.41,12.8 55.2,5.4 55.2,3.25" />
+                    <polygon class="st1" points="19.01,25.6 14.75,25.6 0,32.98 0,35.13 19.05,25.6 19.01,25.6" />
+                    <polygon class="st1" points="10.52,12.81 14.78,12.81 0,5.41 0,7.55 10.52,12.81" />
+                    <polygon class="st1" points="44.63,25.59 40.37,25.59 55.2,33.02 55.2,30.88 44.63,25.59" />
+                  </g>
+                </svg>
+                <span>English</span>
+              </div>
+            </div>
+          </div>
+
+          <button id="logout" onclick="openLogoutModal()">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+      <div class="grid-container">
+        <!-- Client & Task Info Panel -->
+        <div class="info-panel panel-left">
+          <div class="panel-header">
+            <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span data-translatable="workInfo">Work Information</span>
+          </div>
+
+          <div class="form-group">
+            <label for="clientNameInput" data-translatable="client">
+              <svg class="label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              Staff
+            </label>
+            <input type="text" class="form-control" id="clientNameInput" readonly />
+          </div>
+          <div class="form-group">
+            <label for="project" data-translatable="projectLabel">
+              <svg class="label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+              </svg>
+              Project
+            </label>
+            <div class="select-wrapper">
+              <select id="project" class="form-control styled-select" onchange="loadTasksForProject()">
+                <option disabled selected value="">-- Select a Project --</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="task" data-translatable="taskLabel">
+              <svg class="label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 11l3 3L22 4" />
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+              </svg>
+              Task
+            </label>
+            <div class="select-wrapper">
+              <select id="task" class="form-control styled-select">
+                <option disabled selected value="">-- Select a Task --</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Control Block - Center Panel -->
+        <div class="control-panel container floating">
+          <div class="state-circle work" id="stateCircle">
+            <div class="state-label" id="stateLabel" data-translatable="work">WORK</div>
+          </div>
+          <p id="statusText" class="status-text"></p>
+
+          <!-- Mode Selection Buttons -->
+          <div class="mode-selection">
+            <button id="workModeBtn" class="mode-btn active" data-translatable="workMode">
+              <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+                <line x1="7" y1="8" x2="17" y2="8"/>
+                <line x1="7" y1="12" x2="13" y2="12"/>
+                <line x1="7" y1="16" x2="11" y2="16"/>
+              </svg>
+              Work Mode
+            </button>
+            <button id="meetingModeBtn" class="mode-btn" data-translatable="meetingMode">
+              <svg class="mode-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+              Meeting Mode
+            </button>
+          </div>
+
+          <!-- Timer Display -->
+          <div class="timer-display" id="work-timer">
+            <div class="timer-unit">
+              <div class="timer-value" id="hours">00</div>
+              <div class="timer-label">HRS</div>
+            </div>
+            <div class="timer-unit">
+              <div class="timer-value" id="minutes">00</div>
+              <div class="timer-label">MIN</div>
+            </div>
+            <div class="timer-unit">
+              <div class="timer-value" id="seconds">00</div>
+              <div class="timer-label">SEC</div>
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <button class="action-button start-button" id="startBtn">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+              <span data-translatable="start">START</span>
+            </button>
+            <button class="action-button reset-button" id="resetBtn" disabled>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              <span data-translatable="finish">Finish</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Stats Panel - Right Side -->
+        <div class="info-panel panel-right">
+          <div class="panel-header">
+            <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+            </svg>
+            <span data-translatable="sessionStats">Session Stats</span>
+          </div>
+
+          <div class="form-group">
+            <label for="todayDate" data-translatable="today">
+              <svg class="label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              Today
+            </label>
+            <input type="text" class="form-control" id="todayDate" disabled />
+          </div>
+
+          <div class="form-group">
+            <label for="loggedTime" data-translatable="totalLogged">
+              <svg class="label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              Total Time Logged
+            </label>
+            <div id="loggedTime" class="form-control">00:00:00</div>
+          </div>
+
+          <div class="form-group">
+            <label for="loggingInput" data-translatable="screenRecording">
+              <svg class="label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Screen Recording
+            </label>
+            <input type="text" class="form-control" id="loggingInput" value="NO" disabled />
+          </div>
+
+          <div class="form-group">
+            <label for="screenshotInterval" data-translatable="screenshotInterval">
+              <svg class="label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+              Screenshot Interval
+            </label>
+            <div id="screenshotInterval" class="form-control">...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Work Animation (hidden by default) -->
+      <!-- <div id="work-animation" style="display: none; text-align: center; margin-top: 10px;">
+        <img src="" alt="Working Animation" style="width: auto; border-radius: 8px; max-width: 250px;" />
+        <p style="margin-top: 8px; font-weight: bold;">Welcome...</p>
+      </div> -->
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="nav-container">
+      <ul class="nav-menu">
+
+        <li class="nav-item active">
+          <a class="" onclick="openInNewTab('https://crm.deluxebilisim.com/')" title="CRM">
+            <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M23 9L19.8 12.1999L18 10.4M8 15C5.79086 15 4 16.7909 4 19V21H20V19C20 16.7909 18.2091 15 16 15H12M12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11C14.2091 11 16 9.20914 16 7C16 6.27143 15.8052 5.58835 15.4649 5"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a onclick="openHelpModal()" class="" data-page="help" title="Help" style="cursor: pointer;">
+            <svg fill="currentColor" width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm1 16h-2v-2h2v2zm.976-4.885c-.196.158-.385.309-.535.459-.408.407-.44.777-.441.793v.133h-2v-.167c0-.118.029-1.177 1.026-2.174.195-.195.437-.393.691-.599.734-.595 1.216-1.029 1.216-1.627a1.934 1.934 0 0 0-3.867.001h-2C8.066 7.765 9.831 6 12 6s3.934 1.765 3.934 3.934c0 1.597-1.179 2.55-1.958 3.181z" />
+            </svg>
+
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a onclick="openSettingsModal()" class="" title="Settings" style="cursor: pointer;">
+            <svg width="40px" height="40px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+              <path fill="currentColor"
+                d="M600.704 64a32 32 0 0 1 30.464 22.208l35.2 109.376c14.784 7.232 28.928 15.36 42.432 24.512l112.384-24.192a32 32 0 0 1 34.432 15.36L944.32 364.8a32 32 0 0 1-4.032 37.504l-77.12 85.12a357.12 357.12 0 0 1 0 49.024l77.12 85.248a32 32 0 0 1 4.032 37.504l-88.704 153.6a32 32 0 0 1-34.432 15.296L708.8 803.904c-13.44 9.088-27.648 17.28-42.368 24.512l-35.264 109.376A32 32 0 0 1 600.704 960H423.296a32 32 0 0 1-30.464-22.208L357.696 828.48a351.616 351.616 0 0 1-42.56-24.64l-112.32 24.256a32 32 0 0 1-34.432-15.36L79.68 659.2a32 32 0 0 1 4.032-37.504l77.12-85.248a357.12 357.12 0 0 1 0-48.896l-77.12-85.248A32 32 0 0 1 79.68 364.8l88.704-153.6a32 32 0 0 1 34.432-15.296l112.32 24.256c13.568-9.152 27.776-17.408 42.56-24.64l35.2-109.312A32 32 0 0 1 423.232 64H600.64zm-23.424 64H446.72l-36.352 113.088-24.512 11.968a294.113 294.113 0 0 0-34.816 20.096l-22.656 15.36-116.224-25.088-65.28 113.152 79.68 88.192-1.92 27.136a293.12 293.12 0 0 0 0 40.192l1.92 27.136-79.808 88.192 65.344 113.152 116.224-25.024 22.656 15.296a294.113 294.113 0 0 0 34.816 20.096l24.512 11.968L446.72 896h130.688l36.48-113.152 24.448-11.904a288.282 288.282 0 0 0 34.752-20.096l22.592-15.296 116.288 25.024 65.28-113.152-79.744-88.192 1.92-27.136a293.12 293.12 0 0 0 0-40.256l-1.92-27.136 79.808-88.128-65.344-113.152-116.288 24.96-22.592-15.232a287.616 287.616 0 0 0-34.752-20.096l-24.448-11.904L577.344 128zM512 320a192 192 0 1 1 0 384 192 192 0 0 1 0-384zm0 64a128 128 0 1 0 0 256 128 128 0 0 0 0-256z" />
+            </svg>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a onclick="openReviewModal()" class="" data-page="logout" title="Feedback">
+            <svg fill="currentColor" width="40px" height="40px" viewBox="0 0 1920 1920"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M84 0v1423.143h437.875V1920l621.235-496.857h692.39V0H84Zm109.469 109.464H1726.03V1313.57h-621.235l-473.452 378.746V1313.57H193.469V109.464Z"
+                fill-rule="evenodd" />
+            </svg>
+
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+
+  </div>
+
+  <!-- Smooth Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+  <div class="drawer" id="drawer">
+    <div class="drawer-header">
+      <figure style="display: flex; align-items: center; justify-content: center;">
+        <img src="./static/dds-logo.png" alt="Logo" class="drawer-logo" width="250px">
+
+      </figure>
+      <!-- <button class="drawer-close" onclick="closeDrawer()" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button> -->
+    </div>
+
+    <div class="drawer-content">
+      <div class="drawer-section">
+        <div class="drawer-item project-info">
+          <!-- Modern folder/project icon -->
+
+          <svg class="drawer-icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+            viewBox="8.869899787902831 6.460000076293945 30.2600993347168 35.08000366210938"
+            enable-background="new 0 0 48 48">
+            <g>
+              <path fill="var(--drawer-background-color)" stroke="var(--primary-color)" stroke-width="0.92"
+                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                d="M30.9338,33.9538H17.1723c-2.6217,0-4.7471-2.1253-4.7471-4.7471V11.6671c0-2.6217,2.1253-4.7471,4.7471-4.7471h13.7616c2.6217,0,4.7471,2.1253,4.7471,4.7471v17.5396C35.6809,31.8285,33.5555,33.9538,30.9338,33.9538z" />
+              <path fill="none" stroke="var(--primary-color)" stroke-width="0.92" stroke-linecap="round"
+                stroke-linejoin="round" stroke-miterlimit="10"
+                d="M31.0838,24.5767h-0.9422c-0.7519,0-1.3614-0.6095-1.3614-1.3614v-6.8568c0-0.7519,0.6095-1.3614,1.3614-1.3614h0.9422c0.7519,0,1.3614,0.6095,1.3614,1.3614v6.8568C32.4452,23.9672,31.8357,24.5767,31.0838,24.5767z" />
+              <path fill="none" stroke="var(--primary-color)" stroke-width="0.92" stroke-linecap="round"
+                stroke-linejoin="round" stroke-miterlimit="10"
+                d="M24.1846,24.5767h-0.9422c-0.7519,0-1.3614-0.6095-1.3614-1.3614V18.49c0-0.7519,0.6095-1.3614,1.3614-1.3614h0.9422c0.7519,0,1.3614,0.6095,1.3614,1.3614v4.7253C25.546,23.9672,24.9364,24.5767,24.1846,24.5767z" />
+            </g>
+            <g>
+              <g>
+                <line fill="none" stroke="var(--drawer-text-color)" stroke-width="0.92" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-miterlimit="10" x1="16.8235" y1="12.3519" x2="21.881" y2="12.3519" />
+                <line fill="none" stroke="var(--drawer-text-color)" stroke-width="0.92" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-miterlimit="10" x1="16.8235" y1="15.261" x2="18.6428" y2="15.261" />
+              </g>
+            </g>
+            <g>
+              <g>
+              </g>
+              <path fill="var(--drawer-background-color)" stroke="var(--drawer-text-color)" stroke-width="0.92"
+                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                d="M38.67,27.9201v8.3017c0,2.6855-2.1814,4.8582-4.8582,4.8582H14.1881c-2.6768,0-4.8582-2.1727-4.8582-4.8582V23.7832c0-3.0383,2.463-5.5013,5.5013-5.5013h3.6762c1.8635,0,3.5137,0.9307,4.5051,2.3517c1.0753,1.5413,2.8621,2.4282,4.7414,2.4282h6.0579C36.4886,23.0619,38.67,25.2346,38.67,27.9201z" />
+            </g>
+            <g>
+              <line fill="none" stroke="var(--primary-color)" stroke-width="0.92" stroke-linecap="round"
+                stroke-linejoin="round" stroke-miterlimit="10" x1="17.8691" y1="34.9491" x2="30.1309" y2="34.9491" />
+            </g>
+          </svg>
+          <div class="project-details">
+            <!-- Only show the project name here per new requirement -->
+            <div class="project-name" id="drawerProjectName">Proje SeÃ§ilmedi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drawer-section">
+
+        <div class="drawer-item task-info" style="padding: 24px 20px;">
+          <div class="task-details" style="cursor:pointer"
+            onclick="openTaskDetailsModal(document.getElementById('drawerTaskName').textContent)">
+            <!-- Modern clipboard/task icon -->
+            <svg class="drawer-icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              viewBox="6.449090042114258 6.54 35.10181610107422 34.92" enable-background="new 0 0 48 48">
+              <g>
+                <path fill="var(--drawer-background-color)" stroke="var(--primary-color)" stroke-width="0.92"
+                  stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                  d="M34.36364,41H13.63636c-3.71537,0-6.72727-3.0119-6.72727-6.72727V13.72727C6.90909,10.0119,9.92099,7,13.63636,7h20.72727c3.71537,0,6.72727,3.0119,6.72727,6.72727v20.54546C41.09091,37.9881,38.07901,41,34.36364,41z" />
+                <polyline fill="none" stroke="var(--primary-color)" stroke-width="0.92" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-miterlimit="10"
+                  points="15.31497,16.47526 16.45905,17.61934 19.44975,14.62865" />
+                <line fill="none" stroke="var(--primary-color)" stroke-width="0.92" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-miterlimit="10" x1="26.27273" y1="16.93691" x2="34.5" y2="16.93691" />
+                <path fill="none" stroke="var(--primary-color)" stroke-width="0.92" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-miterlimit="10"
+                  d="M15.05162,11.27273h4.41366c1.23283,0,2.23224,0.99941,2.23224,2.23224v4.41366c0,1.23283-0.99941,2.23224-2.23224,2.23224h-4.41366c-1.23283,0-2.23224-0.99941-2.23224-2.23224v-4.41366C12.81938,12.27214,13.81879,11.27273,15.05162,11.27273z" />
+              </g>
+              <g>
+                <line fill="none" stroke="var(--drawer-text-color)" stroke-width="0.92" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-miterlimit="10" x1="26.27273" y1="25.52143" x2="34.5" y2="25.52143" />
+                <path fill="none" stroke="var(--drawer-text-color)" stroke-width="0.92" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-miterlimit="10"
+                  d="M17.38236,27.49036c1.09925,0,1.99036-0.89112,1.99036-1.99036s-0.89112-1.99036-1.99036-1.99036c-1.09925,0-1.99037,0.89112-1.99037,1.99036S16.28311,27.49036,17.38236,27.49036" />
+                <line fill="none" stroke="var(--drawer-text-color)" stroke-width="0.92" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-miterlimit="10" x1="26.27273" y1="33.5118" x2="34.5" y2="33.5118" />
+                <path fill="none" stroke="var(--drawer-text-color)" stroke-width="0.92" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-miterlimit="10"
+                  d="M17.38236,35.48073c1.09925,0,1.99036-0.89112,1.99036-1.99036S18.48161,31.5,17.38236,31.5c-1.09925,0-1.99037,0.89112-1.99037,1.99036S16.28311,35.48073,17.38236,35.48073" />
+              </g>
+            </svg>
+            <div class="task-text-wrapper">
+              <div class="task-name" id="drawerTaskName" style="margin-bottom:10px;">No Task Selected</div>
+              <div class="task-status" id="drawerTaskStatus" style="margin-bottom:10px;">LÃ¼tfen Ã§alÄ±ÅŸmaya baÅŸlamak
+                iÃ§in bir gÃ¶rev seÃ§in</div>
+              <div class="task-remaining" id="drawerTaskRemaining">Time left: --</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drawer-section">
+
+        <!-- Removed spent time, only show remaining time in task card above -->
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- For Logout Modal  -->
+  <div id="logoutModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="logoutModalTitle" data-translatable="logoutTitle">Confirm Logout</h2>
+        <p id="logoutModalDesc" data-translatable="logoutDesc">
+          Are you sure you want to log out from DDS-FocusPro?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-buttons">
+          <button class="modal-btn cancel-btn" onclick="closeLogoutModal()"
+            data-translatable="logoutCancel">Cancel</button>
+          <button class="modal-btn submit-btn" onclick="confirmLogout()" data-translatable="logoutConfirm">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <!-- Configuration Panel Modal -->
+  <div id="configModal" class="modal">
+    <div class="modal-content" style="max-width: 600px; max-height: 80vh; overflow-y: auto;">
+      <h2>âš™ï¸ Configuration Settings</h2>
+      <div style="text-align: left;">
+
+        <!-- API Source Info -->
+        <div class="config-section">
+          <h3>ðŸ“¡ Configuration Source</h3>
+          <p id="config-source-info">Loading...</p>
+          <button onclick="refreshConfiguration()" class="modal-btn" style="margin-top: 10px;">
+            ðŸ”„ Refresh from API
+          </button>
+        </div>
+
+        <!-- UI Settings -->
+        <div class="config-section">
+          <h3>ðŸŽ¨ UI Settings</h3>
+          <div class="config-row">
+            <label>Primary Color:</label>
+            <input type="color" id="config-primary-color" disabled>
+            <span id="config-primary-color-value">#006039</span>
+          </div>
+          <div class="config-row">
+            <label>Font Size:</label>
+            <select id="config-font-size" disabled>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+              <option value="extra_large">Extra Large</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Screenshot Settings -->
+        <div class="config-section">
+          <h3>ðŸ“¸ Screenshot Settings</h3>
+          <div class="config-row">
+            <label>Capture Interval:</label>
+            <span id="config-screenshot-interval">60</span> seconds
+          </div>
+          <div class="config-row">
+            <label>Quality:</label>
+            <span id="config-screenshot-quality">85</span>%
+          </div>
+        </div>
+
+        <!-- Features -->
+        <div class="config-section">
+          <h3>âœ¨ Features</h3>
+          <div class="config-row">
+            <label>
+              <input type="checkbox" id="feature-ai-analysis" disabled>
+              AI Analysis
+            </label>
+          </div>
+          <div class="config-row">
+            <label>
+              <input type="checkbox" id="feature-auto-categorization" disabled>
+              Auto Categorization
+            </label>
+          </div>
+          <div class="config-row">
+            <label>
+              <input type="checkbox" id="feature-idle-detection" disabled>
+              <span data-translatable="idleDetection">Idle Detection</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-buttons">
+        <button class="modal-btn cancel-btn" onclick="closeConfigModal()" data-translatable="close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .config-section {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid var(--border-color, #e0e0e0);
+      border-radius: 8px;
+      background: var(--background-light, #f9f9f9);
+    }
+
+    .config-section h3 {
+      margin-top: 0;
+      color: var(--primary-color);
+    }
+
+    .config-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 5px 0;
+    }
+
+    .config-row label {
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .config-row input,
+    .config-row select {
+      max-width: 150px;
+    }
+
+    #config-source-info {
+      padding: 10px;
+      background: rgba(0, 96, 57, 0.1);
+      border-radius: 5px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    /* Modal close button positioned top-right inside modal content */
+    .modal .modal-close {
+      position: absolute;
+      top: 9px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.06);
+      border-radius: 6px;
+      padding: 0px;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+      z-index: 60;
+    }
+
+    /* Ensure modal content is positioned relative so close button sits correctly */
+    .modal .modal-content {
+      position: relative;
+      background: linear-gradient(135deg, var(--background-color, #ffffff) 0%, var(--background-light, #f8f9fa) 100%);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      padding: 35px 40px;
+      max-width: 600px;
+      animation: modalSlideIn 0.4s ease-out;
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal h2 {
+      color: var(--primary-color);
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 0px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 0px solid var(--primary-color);
+      padding-bottom: 5px;
+      justify-content: center;
+    }
+
+    .task-meta {
+      display: flex;
+      gap: 24px;
+      margin: 25px 0;
+      padding: 20px;
+      background: rgba(0, 96, 57, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 96, 57, 0.1);
+    }
+
+    .task-meta>div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .task-meta strong {
+      color: var(--primary-color);
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .task-meta span {
+      color: var(--text-color);
+      font-size: 15px;
+      font-weight: 400 !important;
+    }
+
+    .task-desc {
+      margin-top: 20px;
+      padding: 20px;
+      background: var(--background-color, #ffffff);
+      border-radius: 12px;
+      line-height: 1.8;
+      color: var(--text-color);
+      font-size: 15px;
+      border: 1px solid var(--border-color, #e0e0e0);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .task-customfields {
+      margin: 20px 0;
+      padding: 20px;
+      background: var(--background-light, #fafafa);
+      border-radius: 12px;
+      border: 1px solid var(--border-color, #e8e8e8);
+    }
+
+    .task-customfields>div {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-color, #e8e8e8);
+    }
+
+    .task-customfields>div:last-child {
+      border-bottom: none;
+    }
+
+    .task-customfields span:first-child {
+      color: var(--primary-color);
+      font-weight: 600;
+      min-width: 150px;
+      display: inline-block;
+    }
+
+    .task-customfields span:last-child {
+      color: var(--text-color);
+    }
+
+    .modal .modal-close {
+      background: linear-gradient(135deg, var(--danger-color) 0%, var(--danger-dark) 100%);
+      color: white;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+    }
+
+    .modal .modal-close:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(220, 53, 69, 0.5);
+    }
+
+    .modal .error {
+      color: var(--danger-color);
+      font-weight: 600;
+      padding: 15px;
+      background: rgba(220, 53, 69, 0.1);
+      border-radius: 8px;
+    }
+
+    #taskDetailsBody p {
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    #taskDetailsTitle {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--success-color) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+
+  <!-- Logout Confirmation Modal -->
+  <!-- Idle Timeout Modal -->
+  <!-- Idle Timeout Modal -->
+  <!-- <div id="idleModal" class="modal">
+  <div class="modal-content idle-shake" style="text-align: center;">
+    <h2 id="idleModalTitle">â¸ï¸ You're Idle</h2>
+    <p id="idleModalDesc">Youâ€™ve been inactive. Timer is paused.</p>
+    
+    <p id="idleCountdownText" style="font-size: 22px; font-weight: bold; color: #e67e22; margin-top: 10px;">
+      Auto-saving in <span id="idleCounter">10</span> seconds...
+    </p>
+
+    <button onclick="cancelIdleCountdown()" 
+            style="margin-top: 20px; padding: 10px 20px; font-size: 16px; font-weight: bold; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      âŒ Cancel & Resume Work
+    </button>
+  </div>
+</div> -->
+
+
+
+  <!-- For Idle Modal  -->
+  <div id="idleModal" class="modal" onclick="if(event.target === this) closeIdleModal()">
+    <div class="modal-content idle-shake">
+      <div class="idle-modal-icon">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="var(--warning-color)" stroke-width="2" fill="none" />
+          <path d="M12 7v6" stroke="var(--warning-color)" stroke-width="2" stroke-linecap="round" />
+          <circle cx="12" cy="16" r="1" fill="var(--warning-color)" />
+        </svg>
+      </div>
+      <h2 id="idleModalTitle" class="idle-modal-title" data-translatable="idleTitle">You Have Been Idle</h2>
+      <p id="idleModalDesc" class="idle-modal-desc" data-translatable="idleDesc">You have been idle for 3 minutes so
+        your time has been stopped automatically. If you want to work please again start the work and continue the work.
+      </p>
+      <div class="idle-modal-buttons">
+        <button class="idle-btn idle-btn-secondary" onclick="closeIdleModal()" data-translatable="close">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modals -->
+  <div id="finishModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </span>
+      <div class="modal-header">
+        <h2 id="modalTitle">Task Completion</h2>
+        <p id="modalDesc">Please describe what you have completed for this task</p>
+      </div>
+      <div class="modal-body">
+        <textarea id="taskDetailInput" placeholder="Type your task details here..." rows="5"></textarea>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-buttons">
+          <button id="modalSubmitBtn" class="modal-btn submit-btn" onclick="submitTaskDetails()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Task Details Modal -->
+  <div id="taskDetailsModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeTaskDetailsModal()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </span>
+      <h2 id="taskDetailsTitle">GÃ¶rev DetaylarÄ±</h2>
+      <div id="taskDetailsBody">
+        <!-- Task details will be injected here -->
+      </div>
+    </div>
+  </div>
+
+  <div id="reviewModal" class="modal-review">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeReviewModal()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </span>
+      <h2 id="reviewModalTitle">ðŸ’¬ Share Your Feedback</h2>
+      <p id="reviewModalDesc">We'd love to hear your thoughts about DDSFocusPro:</p>
+      <textarea id="reviewInput" placeholder="Type your feedback here..." rows="5"></textarea>
+      <div class="modal-buttons">
+        <button id="reviewSubmitBtn" class="modal-btn submit-btn" onclick="submitUserReview()">Submit Review</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loader -->
+  <div id="syncLoader"
+    style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 9999; justify-content: center; align-items: center;">
+    <div style="padding: 20px; background: white; border-radius: 8px; font-weight: bold;">
+      ðŸ”„ Syncing timesheets...Please wait
+    </div>
+  </div>
+
+  <!-- External Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <!-- Configuration Manager removed - API functionality disabled -->
+  <script>
+    function toggleLanguageDropdown() {
+      const dropdown = document.getElementById('languageDropdown');
+      const button = document.querySelector('.language-btn');
+
+      dropdown.classList.toggle('show');
+      button.classList.toggle('active');
+    }
+
+    // ====== SMOOTH DRAWER FUNCTIONS ======
+    function toggleDrawer() {
+      const drawer = document.getElementById('drawer');
+      const overlay = document.getElementById('drawerOverlay');
+      const arrowBtn = document.getElementById('drawerArrowBtn');
+
+      if (drawer.classList.contains('active')) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    }
+
+    function openDrawer() {
+      const drawer = document.getElementById('drawer');
+      const overlay = document.getElementById('drawerOverlay');
+      const arrowBtn = document.getElementById('drawerArrowBtn');
+
+      drawer.classList.add('active');
+      overlay.classList.add('active');
+      arrowBtn.classList.add('active');
+
+      // Prevent body scroll when drawer is open
+      document.body.style.overflow = 'hidden';
+
+      // Add staggered animation to drawer sections
+      const sections = document.querySelectorAll('.drawer-section');
+      sections.forEach((section, index) => {
+        section.style.animationDelay = `${0.1 + (index * 0.1)}s`;
+        section.style.animation = 'slideInFromLeft 0.4s ease-out forwards';
+      });
+    }
+
+    function closeDrawer() {
+      const drawer = document.getElementById('drawer');
+      const overlay = document.getElementById('drawerOverlay');
+      const arrowBtn = document.getElementById('drawerArrowBtn');
+
+      drawer.classList.remove('active');
+      overlay.classList.remove('active');
+      arrowBtn.classList.remove('active');
+
+      // Restore body scroll
+      document.body.style.overflow = '';
+
+      // Reset animations
+      const sections = document.querySelectorAll('.drawer-section');
+      sections.forEach((section) => {
+        section.style.animation = '';
+        section.style.animationDelay = '';
+      });
+    }
+
+    // Helper functions for drawer actions
+    function showHelp() {
+      closeDrawer();
+      // Add help functionality here
+      console.log('Help requested');
+    }
+
+    function openSettings() {
+      closeDrawer();
+      // Add settings functionality here
+      console.log('Settings opened');
+    }
+
+    function showAbout() {
+      closeDrawer();
+      // Add about functionality here
+      const currentLang = sessionStorage.getItem('selectedLanguage') || 'tr';
+      const translation = clientTranslations[currentLang] || clientTranslations.en;
+      alert(translation.aboutMessage);
+    }
+
+    // ====== DRAWER INFO UPDATE FUNCTIONS ======
+    function updateDrawerProjectInfo() {
+      const projectSelect = document.getElementById('project');
+      const drawerProjectName = document.getElementById('drawerProjectName');
+      // Only update the project name in the drawer (no client name)
+      if (projectSelect && projectSelect.selectedOptions.length > 0) {
+        const selectedProject = projectSelect.selectedOptions[0].text;
+
+        // Get current language for translations
+        const currentLang = sessionStorage.getItem('selectedLanguage') || 'tr';
+        const translation = clientTranslations[currentLang] || clientTranslations.en;
+
+        drawerProjectName.textContent = selectedProject !== translation.selectProject ? selectedProject : translation.noProjectSelected;
+      } else {
+        const currentLang = sessionStorage.getItem('selectedLanguage') || 'tr';
+        const translation = clientTranslations[currentLang] || clientTranslations.en;
+
+        drawerProjectName.textContent = translation.noProjectSelected;
+      }
+    }
+
+    function updateDrawerTaskInfo() {
+      const taskSelect = document.getElementById('task');
+      const drawerTaskName = document.getElementById('drawerTaskName');
+      const drawerTaskStatus = document.getElementById('drawerTaskStatus');
+      const stateLabel = document.getElementById('stateLabel');
+
+      // Get current language for translations
+      const currentLang = sessionStorage.getItem('selectedLanguage') || 'tr';
+      const translation = clientTranslations[currentLang] || clientTranslations.en;
+
+      if (taskSelect && taskSelect.selectedOptions.length > 0) {
+        const selectedTask = taskSelect.selectedOptions[0].text;
+        const currentState = stateLabel ? stateLabel.textContent : 'IDLE';
+
+        drawerTaskName.textContent = selectedTask !== translation.selectTask ? selectedTask : translation.noTaskSelected;
+        drawerTaskStatus.textContent = selectedTask !== translation.selectTask ? `${translation.status} ${currentState}` : translation.pleaseSelectTask;
+      } else {
+        drawerTaskName.textContent = translation.noTaskSelected;
+        drawerTaskStatus.textContent = translation.pleaseSelectTask;
+      }
+    }
+
+    function updateDrawerTimeInfo() {
+      const hoursElement = document.getElementById('hours');
+      const minutesElement = document.getElementById('minutes');
+      const secondsElement = document.getElementById('seconds');
+      const totalTimeElement = document.getElementById('totaltimecount');
+
+      const drawerCurrentTime = document.getElementById('drawerCurrentTime');
+      const drawerTotalTime = document.getElementById('drawerTotalTime');
+
+      if (hoursElement && minutesElement && secondsElement) {
+        const hours = hoursElement.textContent || '00';
+        const minutes = minutesElement.textContent || '00';
+        const seconds = secondsElement.textContent || '00';
+
+        drawerCurrentTime.textContent = `${hours}:${minutes}:${seconds}`;
+      }
+
+      if (totalTimeElement) {
+        const totalTime = totalTimeElement.textContent || '00:00';
+        // Get current language for translations
+        const currentLang = sessionStorage.getItem('selectedLanguage') || 'tr';
+        const translation = clientTranslations[currentLang] || clientTranslations.en;
+        drawerTotalTime.textContent = `${translation.total} ${totalTime}`;
+      }
+    }
+
+    // Auto-update drawer info every second
+    setInterval(function () {
+      // updateDrawerTimeInfo(); // Disabled - elements not present in drawer
+      updateDrawerTaskInfo(); // Update task status in case state changes
+    }, 1000);
+
+    // Update drawer info when dropdowns change
+    document.addEventListener('DOMContentLoaded', function () {
+      const projectSelect = document.getElementById('project');
+      const taskSelect = document.getElementById('task');
+
+      if (projectSelect) {
+        projectSelect.addEventListener('change', updateDrawerProjectInfo);
+      }
+
+      if (taskSelect) {
+        taskSelect.addEventListener('change', function () {
+          updateDrawerTaskInfo();
+          fetchTaskDetailsForDrawer();
+        });
+      }
+
+      // Initial update
+      setTimeout(function () {
+        updateDrawerProjectInfo();
+        updateDrawerTaskInfo();
+        // updateDrawerTimeInfo(); // Disabled - elements not present in drawer
+        fetchTaskDetailsForDrawer();
+      }, 500);
+    });
+
+    // Configuration Modal Functions
+    function openConfigModal() {
+      const modal = document.getElementById('configModal');
+      modal.style.display = 'flex';
+      // Trigger animation after display is set
+      setTimeout(() => {
+        modal.classList.remove('hide');
+        modal.classList.add('show');
+      }, 10);
+      updateConfigDisplay();
+    }
+
+    function closeConfigModal() {
+      const modal = document.getElementById('configModal');
+      modal.classList.remove('show');
+      modal.classList.add('hide');
+
+      // Hide modal after animation completes
+      setTimeout(() => {
+        modal.style.display = 'none';
+        modal.classList.remove('hide');
+      }, 300);
+    }
+
+    function updateConfigDisplay() {
+      // ConfigManager API disabled - using static configuration
+      console.log('âš ï¸ ConfigManager API disabled - using default settings');
+
+      // Update source info with static values
+      document.getElementById('config-source-info').innerHTML = `
+        <strong>Theme:</strong> Default<br>
+        <strong>Version:</strong> 1.4<br>
+        <strong>Source:</strong> Static Configuration<br>
+        <strong>Status:</strong> API Disabled
+    `;
+
+      // Set default values for other config displays if they exist
+      const elements = {
+        'config-font-size': '14px',
+        'config-font-family': 'Segoe UI, sans-serif',
+        'config-screenshot-interval': '60 seconds',
+        'config-screenshot-quality': '85%',
+        'config-ai-analysis': 'Enabled',
+        'config-idle-detection': 'Enabled'
+      };
+
+      Object.entries(elements).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.textContent = value;
+        }
+      });
+    }
+
+    function updateLoggedTime() {
+      const loginTime = localStorage.getItem("loginTime");
+      if (!loginTime) return;
+
+      const loggedTimeElement = document.getElementById("loggedTime");
+      if (!loggedTimeElement) return;
+
+      const elapsed = Date.now() - parseInt(loginTime);
+      const totalSeconds = Math.floor(elapsed / 1000);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      loggedTimeElement.textContent = `${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateLoggedTime, 1000);
+    updateLoggedTime();
+
+    async function refreshConfiguration() {
+      try {
+        console.log('ðŸ”„ Configuration refresh requested - API disabled');
+        const refreshBtn = event.target;
+        refreshBtn.textContent = 'âš ï¸ API Disabled';
+        refreshBtn.disabled = true;
+
+        setTimeout(() => {
+          refreshBtn.textContent = 'âŒ API Disabled';
+          refreshBtn.disabled = true;
+        }, 1000);
+
+        console.log('âš ï¸ ConfigManager API disabled - no refresh available');
+      } catch (error) {
+        console.error('âŒ Configuration refresh error:', error);
+      }
+    }
+
+    async function confirmLogout() {
+      const user = JSON.parse(sessionStorage.getItem('user'));
+
+      if (!user) {
+        sessionStorage.clear();
+        window.location.href = '/';
+        return;
+      }
+
+      const loginTime = localStorage.getItem("loginTime");
+
+      if (!loginTime) {
+        sessionStorage.clear();
+        window.location.href = '/';
+        return;
+      }
+
+      const loginTimestamp = parseInt(loginTime);
+      const logoutTimestamp = Date.now();
+      const totalSeconds = Math.floor((logoutTimestamp - loginTimestamp) / 1000);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      const total_duration = `${hours}h ${minutes}m ${seconds}s`;
+
+      const payload = {
+        email: user.email,
+        staff_id: user.staffid,
+        total_duration,
+        total_seconds: totalSeconds
+      };
+
+      try {
+        const response = await fetch("/api/store_logout_time", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (result.status !== "success") {
+          console.error("Logout failed:", result.message);
+        }
+      } catch (error) {
+        console.error("Error while calling logout API:", error);
+      }
+
+      // Clear storage and redirect after API call finishes
+      localStorage.removeItem("loginTime");
+      sessionStorage.removeItem("user");
+
+      // Hide modal
+      closeLogoutModal();
+
+      // Small delay to ensure fetch finishes in some browsers
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 500);
+    }
+
+    // Close drawer when clicking outside
+    document.addEventListener('click', function (event) {
+      const drawer = document.getElementById('drawer');
+      const arrowBtn = document.getElementById('drawerArrowBtn');
+
+      if (drawer && drawer.classList.contains('active')) {
+        if (!drawer.contains(event.target) && !arrowBtn.contains(event.target)) {
+          closeDrawer();
+        }
+      }
+    });
+
+    // Close drawer with Escape key
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        const drawer = document.getElementById('drawer');
+        if (drawer && drawer.classList.contains('active')) {
+          closeDrawer();
+        }
+      }
+    });
+
+    function selectLanguage(langCode) {
+      const currentLanguage = document.getElementById('currentLanguage');
+
+      // Define flag paths and labels
+      const flags = {
+        en: '/static/images/uk-flag.svg',
+        tr: '/static/images/turkish-flag.svg'
+      };
+
+      const labels = {
+        en: 'English',
+        tr: 'Türkçe'
+      };
+
+      // Fallback to English if langCode is invalid
+      if (!flags[langCode]) langCode = 'en';
+
+      // âœ¨ Fade-out before changing content
+      currentLanguage.style.opacity = 0;
+
+      setTimeout(() => {
+        // Update flag + label
+        currentLanguage.innerHTML = `
+            <span class="language-flag" style="background-image: url('${flags[langCode]}');"></span>
+            ${labels[langCode]}
+        `;
+
+        // âœ¨ Fade-in after update
+        currentLanguage.style.opacity = 1;
+      }, 200); // match CSS transition duration
+
+      // Save and apply language
+      sessionStorage.setItem('selectedLanguage', langCode);
+      setTimeout(() => {
+        applyClientLanguage(langCode);
+      }, 100);
+
+      // Close dropdown
+      document.getElementById('languageDropdown')?.classList.remove('show');
+      document.querySelector('.language-btn')?.classList.remove('active');
+
+      // Highlight selection
+      document.getElementById('option-tr')?.classList.remove('selected');
+      document.getElementById('option-en')?.classList.remove('selected');
+      document.getElementById(`option-${langCode}`)?.classList.add('selected');
+    }
+
+    // Translation system for the client interface
+    const clientTranslations = {
+      tr: {
+        noProjectSelected: "Proje SeÃ§ilmedi",
+        pleaseSelectProject: "LÃ¼tfen bir proje seÃ§in",
+        selectProject: "-- Proje SeÃ§in --",
+        selectTask: "-- Ä°ÅŸ Emri SeÃ§in --",
+        language: "Dil",
+        status: "Durum:",
+        total: "Toplam:",
+        pleaseSelectTask: "LÃ¼tfen Ã§alÄ±ÅŸmaya baÅŸlamak iÃ§in bir gÃ¶rev seÃ§in",
+        meetingSession: "ToplantÄ± Oturumu",
+        currentlyInMeeting: "Åžu anda toplantÄ±da",
+        noTaskSelected: "GÃ¶rev SeÃ§ilmedi",
+        meeting: "ToplantÄ±",
+        meetingInProgress: "ToplantÄ± devam ediyor",
+        loading: "YÃ¼kleniyor...",
+        projectLabel: "Proje",
+        taskLabel: "GÃ¶rev",
+        timeLeft: "Kalan SÃ¼re:",
+        dueLabel: "BitiÅŸ:",
+        aboutMessage: "DDS Focus Pro v1.3\\n\\nProfesyonel zaman takip uygulamasÄ±, Ã¼retkenliÄŸi artÄ±rmak iÃ§in.",
+        client: "Personel",
+        workTime: "Ã‡alÄ±ÅŸma SÃ¼resi",
+        today: "BugÃ¼n",
+        totalLogged: "Toplam GiriÅŸ SÃ¼resi",
+        meetingTime: "ToplantÄ± SÃ¼resi",
+        screenRecording: "Ekran KaydÄ±",
+        screenshotInterval: "Ekran GÃ¶rÃ¼ntÃ¼sÃ¼ AralÄ±ÄŸÄ±",
+        logoutTitle: "Ã‡Ä±kÄ±ÅŸÄ± Onayla",
+        logoutDesc: "Ã‡Ä±kÄ±ÅŸ yapmak istediÄŸinizden emin misiniz?",
+        logoutCancel: "Ä°ptal",
+        logoutConfirm: "Ã‡Ä±kÄ±ÅŸ",
+        idleTitle: "BoÅŸ DurumdasÄ±nÄ±z",
+        idleDesc: "Aktif deÄŸilsiniz. ZamanlayÄ±cÄ± durduruldu."
+      },
+      en: {
+        noProjectSelected: "No Project Selected",
+        pleaseSelectProject: "Please select a project",
+        selectProject: "-- Select a Project --",
+        selectTask: "-- Select a Task --",
+        language: "Language",
+        status: "Status:",
+        total: "Total:",
+        pleaseSelectTask: "Please select a task to start working",
+        meetingSession: "Meeting Session",
+        currentlyInMeeting: "Currently in a meeting",
+        noTaskSelected: "No Task Selected",
+        meeting: "Meeting",
+        meetingInProgress: "Meeting in progress",
+        loading: "Loading...",
+        projectLabel: "Project",
+        taskLabel: "Task",
+        timeLeft: "Time left:",
+        dueLabel: "Due:",
+        aboutMessage: "DDS Focus Pro v1.3\\n\\nA professional time tracking application for enhanced productivity.",
+        client: "Client",
+        workTime: "Work Time",
+        today: "Today",
+        totalLogged: "Total Logged In Time",
+        meetingTime: "Meeting Time",
+        screenRecording: "Screen Recording",
+        screenshotInterval: "Screenshot Interval",
+        logoutTitle: "Confirm Logout",
+        logoutDesc: "Are you sure you want to logout?",
+        logoutCancel: "Cancel",
+        logoutConfirm: "Logout",
+        idleTitle: "You're Idle",
+        idleDesc: "You've been inactive. Timer is paused."
+      }
+    };
+
+    function applyClientLanguage(langCode) {
+      const translation = clientTranslations[langCode] || clientTranslations.en;
+
+      // Update drawer project elements
+      const drawerProjectName = document.getElementById('drawerProjectName');
+      const drawerTaskStatus = document.getElementById('drawerTaskStatus');
+      const drawerTotalTime = document.getElementById('drawerTotalTime');
+
+      // Check if they currently have default text and update them
+      if (drawerProjectName && (drawerProjectName.textContent === 'No Project Selected' ||
+        drawerProjectName.textContent === 'Proje SeÃ§ilmedi')) {
+        drawerProjectName.textContent = translation.noProjectSelected;
+      }
+
+      // Update task status text
+      if (drawerTaskStatus && (drawerTaskStatus.textContent === 'Please select a task to start working' ||
+        drawerTaskStatus.textContent === 'LÃ¼tfen Ã§alÄ±ÅŸmaya baÅŸlamak iÃ§in bir gÃ¶rev seÃ§in')) {
+        drawerTaskStatus.textContent = translation.pleaseSelectTask;
+      }
+
+      // Update total time text if it contains "Total:" or "Toplam:"
+      if (drawerTotalTime) {
+        const currentText = drawerTotalTime.textContent;
+        if (currentText.startsWith('Total:') || currentText.startsWith('Toplam:')) {
+          const timeValue = currentText.split(': ')[1] || '00:00';
+          drawerTotalTime.textContent = `${translation.total} ${timeValue}`;
+        }
+      }
+
+      // Update language button text if it shows default text
+      const currentLanguage = document.getElementById('currentLanguage');
+      if (currentLanguage && (currentLanguage.textContent === 'Language' ||
+        currentLanguage.textContent === 'Dil')) {
+        // Don't change the language button text as it shows flags + text, handled in selectLanguage function
+      }
+
+      // Update ALL form labels with data-translatable attributes
+      document.querySelectorAll('label[data-translatable]').forEach(label => {
+        const key = label.getAttribute('data-translatable');
+        if (translation[key]) {
+          label.textContent = translation[key];
+        }
+      });
+
+      // Update drawer task name if it's default
+      const drawerTaskName = document.getElementById('drawerTaskName');
+      if (drawerTaskName && (drawerTaskName.textContent === 'No Task Selected' ||
+        drawerTaskName.textContent === 'GÃ¶rev SeÃ§ilmedi')) {
+        drawerTaskName.textContent = translation.noTaskSelected;
+      }
+
+      // Update drawer task remaining if it's default
+      const drawerTaskRemaining = document.getElementById('drawerTaskRemaining');
+      if (drawerTaskRemaining && drawerTaskRemaining.textContent === 'Time left: --') {
+        drawerTaskRemaining.textContent = `${translation.timeLeft} --`;
+      }
+    }
+
+    // Initialize language on page load
+    document.addEventListener('DOMContentLoaded', function () {
+      const savedLanguage = sessionStorage.getItem('selectedLanguage') || 'tr';
+      selectLanguage(savedLanguage);
+    });
+
+    // Close dropdown when clicking outside
+    window.onclick = function (event) {
+      if (!event.target.matches('.language-btn') && !event.target.closest('.language-dropdown')) {
+        const dropdown = document.getElementById('languageDropdown');
+        const button = document.querySelector('.language-btn');
+        if (dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
+          button.classList.remove('active');
+        }
+      }
+    }
+
+    // Handle window close events to ensure proper cleanup
+    window.addEventListener('beforeunload', function (e) {
+      console.log('Window closing - cleaning up...');
+
+      // Call shutdown endpoint to clean up background processes
+      try {
+        fetch('/shutdown', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({})
+        });
+      } catch (error) {
+        console.error('âŒ Error calling shutdown endpoint:', error);
+      }
+
+      // Don't show confirmation dialog, just clean up
+      return undefined;
+    });
+
+    // Also handle unload event as a backup
+    window.addEventListener('unload', function () {
+      console.log('ðŸ—‘ï¸ Window unloading - final cleanup');
+
+      // Send shutdown signal synchronously as a last resort
+      try {
+        navigator.sendBeacon('/shutdown', JSON.stringify({}));
+      } catch (error) {
+        console.error('âŒ Error sending shutdown beacon:', error);
+      }
+    });
+
+    // âœ… Theme Toggle Functionality for Client Page
+    function toggleClientTheme() {
+      const body = document.body;
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+
+      // Update button icon
+      updateClientThemeIcon(newTheme);
+
+      console.log('Client theme changed to:', newTheme);
+    }
+
+    function updateClientThemeIcon(theme) {
+      const sunIcon = document.querySelector('.theme-toggle-client .sun-icon');
+      const moonIcon = document.querySelector('.theme-toggle-client .moon-icon');
+
+      if (sunIcon && moonIcon) {
+        if (theme === 'dark') {
+          sunIcon.style.setProperty('display', 'none', 'important');
+          moonIcon.style.setProperty('display', 'block', 'important');
+        } else {
+          sunIcon.style.setProperty('display', 'block', 'important');
+          moonIcon.style.setProperty('display', 'none', 'important');
+        }
+      }
+    }
+
+    // Initialize theme on page load
+    function initializeClientTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      console.log('Initializing client theme:', savedTheme);
+      document.body.setAttribute('data-theme', savedTheme);
+
+      // Wait a bit for DOM to be ready
+      setTimeout(() => {
+        updateClientThemeIcon(savedTheme);
+      }, 100);
+    }
+
+    // Call initialize theme
+    initializeClientTheme();
+
+    // ====== Fetch Task Details for Drawer (without opening modal) ======
+    async function fetchTaskDetailsForDrawer() {
+      const taskSelect = document.getElementById('task');
+      const drawerTaskRemaining = document.getElementById('drawerTaskRemaining');
+      const currentLang = sessionStorage.getItem('selectedLanguage') || 'tr';
+      const translation = clientTranslations[currentLang] || clientTranslations.en;
+      if (!taskSelect || !drawerTaskRemaining || taskSelect.selectedIndex <= 0) {
+        // Reset to default if no task selected
+        drawerTaskRemaining.textContent = `${translation.timeLeft} --`;
+        return;
+      }
+
+      const selectedTask = taskSelect.selectedOptions[0].text;
+
+      if (selectedTask === translation.selectTask) {
+        drawerTaskRemaining.textContent = `${translation.timeLeft} --`;
+        return;
+      }
+
+      try {
+        // obtain token from sessionStorage; if not present, set a hardcoded token automatically
+        let token = sessionStorage.getItem('authToken') || '';
+        if (!token) {
+          // Hardcoded token (inserted by frontend as requested)
+          token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiZGVsdXhldGltZSIsIm5hbWUiOiJkZWx1eGV0aW1lIiwiQVBJX1RJTUUiOjE3NDUzNDQyNjJ9.kJGo5DksaPwkHwufDvLMGaMmjk5q2F7GhjzwdHtfT_o';
+          try {
+            sessionStorage.setItem('authToken', token);
+          } catch (e) {
+            console.warn('Could not persist authToken to sessionStorage:', e);
+          }
+        }
+
+        const url = '/api/search-task?task_name=' + encodeURIComponent(selectedTask);
+        const headers = token ? { 'Authorization': 'Bearer ' + token } : {};
+
+        const resp = await fetch(url, { headers });
+        const data = await resp.json();
+
+        if (Array.isArray(data) && data.length > 0) {
+          const task = data[0];
+          const due = task.duedate || task.due_date || task.startdate || '';
+
+          let remainingText = '--';
+          let dueText = '--';
+
+          if (due) {
+            // Try to parse date (handles 'YYYY-MM-DD' and full timestamps)
+            const dueDate = new Date(due);
+            if (!isNaN(dueDate.getTime())) {
+              dueText = dueDate.toLocaleDateString();
+
+              const now = new Date();
+              const diffMs = dueDate - now;
+              if (diffMs < 0) {
+                remainingText = 'Overdue';
+              } else {
+                const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+                remainingText = `${days}d ${hours}h ${mins}m`;
+              }
+            }
+          }
+
+          drawerTaskRemaining.innerHTML = `${translation.dueLabel} ${dueText} | ${translation.timeLeft} ${remainingText}`;
+        } else {
+          drawerTaskRemaining.textContent = `${translation.timeLeft} --`;
+        }
+      } catch (err) {
+        console.error('Error fetching task details for drawer', err);
+        drawerTaskRemaining.textContent = `${translation.timeLeft} --`;
+      }
+    }
+
+    // ====== Task Details Modal: fetch and render task notes, due date and remaining time ======
+    async function openTaskDetailsModal(taskName) {
+      // Don't open modal if no task is selected
+      if (!taskName || taskName.trim() === '' || taskName === 'No Task Selected') {
+        return;
+      }
+
+      const modal = document.getElementById('taskDetailsModal');
+      const body = document.getElementById('taskDetailsBody');
+      const title = document.getElementById('taskDetailsTitle');
+
+      if (!modal || !body || !title) {
+        return;
+      }
+
+      title.textContent = taskName || 'GÃ¶rev DetaylarÄ±';
+      body.innerHTML = `
+        <div class="loading-container">
+          <div class="loading-spinner"></div>
+          <p class="loading-text">Loading task details...</p>
+        </div>
+      `;
+      // Ensure modal overlay is visible and uses modal animation classes
+      modal.style.display = 'flex';
+      modal.classList.remove('hide');
+      modal.classList.add('show');
+
+      try {
+        // obtain token from sessionStorage; if not present, set a hardcoded token automatically
+        let token = sessionStorage.getItem('authToken') || '';
+        if (!token) {
+          // Hardcoded token (inserted by frontend as requested)
+          token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiZGVsdXhldGltZSIsIm5hbWUiOiJkZWx1eGV0aW1lIiwiQVBJX1RJTUUiOjE3NDUzNDQyNjJ9.kJGo5DksaPwkHwufDvLMGaMmjk5q2F7GhjzwdHtfT_o';
+          try {
+            sessionStorage.setItem('authToken', token);
+          } catch (e) {
+            console.warn('Could not persist authToken to sessionStorage:', e);
+          }
+        }
+
+        const url = '/api/search-task?task_name=' + encodeURIComponent(taskName);
+        const headers = token ? { 'Authorization': 'Bearer ' + token } : {};
+
+        console.log('ðŸ” Fetching task details from:', url);
+        const resp = await fetch(url, { headers });
+
+        // Check if response is ok
+        if (!resp.ok) {
+          console.error('âŒ HTTP error! status:', resp.status);
+          throw new Error(`HTTP ${resp.status}: ${resp.statusText}`);
+        }
+
+        const data = await resp.json();
+        console.log('âœ… Task data received:', data);
+
+        if (Array.isArray(data) && data.length > 0) {
+          const task = data[0];
+          const description = task.description || '';
+          const due = task.duedate || task.due_date || task.startdate || '';
+
+          let remainingText = 'N/A';
+          let isOverdue = false;
+
+          if (due) {
+            // Try to parse date (handles 'YYYY-MM-DD' and full timestamps)
+            const dueDate = new Date(due);
+            if (!isNaN(dueDate.getTime())) {
+              const now = new Date();
+              const diffMs = dueDate - now;
+              if (diffMs < 0) {
+                remainingText = 'Overdue';
+                isOverdue = true;
+              } else {
+                const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+                remainingText = `${days}d ${hours}h ${mins}m`;
+              }
+            }
+          }
+
+          // Render customfields with spacing, no bullets
+          let customFieldsHtml = '';
+          if (Array.isArray(task.customfields) && task.customfields.length > 0) {
+            customFieldsHtml = '<div class="task-customfields" style="margin-bottom:18px;">';
+            task.customfields.forEach(field => {
+              if (field.value && field.value.trim() !== '') {
+                customFieldsHtml += `<div style="margin-bottom:8px;">
+                  <span style="font-weight:600; color:#444;">${field.label}:</span>
+                  <span style="margin-left:6px; color:#222;">${field.value}</span>
+                </div>`;
+              }
+            });
+            customFieldsHtml += '</div>';
+          }
+
+          body.innerHTML = `
+            <div class="task-meta">
+              <div>
+                <strong>Due Date : </strong>
+                <span>${due || 'Not Set'}</span>
+              </div>
+              <div>
+                <strong>Time Remaining : </strong>
+                <span class="${isOverdue ? 'overdue-text' : ''}">${remainingText}</span>
+              </div>
+            </div>
+            ${customFieldsHtml}
+           
+          `;
+        } else if (data && data.error) {
+          body.innerHTML = `
+            <div class="error" style="text-align: center; padding: 30px;">
+              <div style="font-size: 48px; margin-bottom: 15px;">âš ï¸</div>
+              <h3 style="color: #d32f2f; margin-bottom: 10px;">API Error</h3>
+              <p style="color: #666;">${data.error}</p>
+            </div>
+          `;
+        } else {
+          body.innerHTML = `
+            <div style="text-align: center; padding: 30px; color: #999;">
+              <div style="font-size: 48px; margin-bottom: 15px;">ðŸ“­</div>
+              <h3 style="color: #666; margin-bottom: 10px;">Task Not Found</h3>
+              <p>The requested task could not be found.</p>
+            </div>
+          `;
+        }
+      } catch (err) {
+        console.error('Error fetching task details', err);
+        const errorMessage = err.message || 'Unknown error occurred';
+        body.innerHTML = `
+          <div class="error" style="text-align: center; padding: 30px;">
+            <div style="font-size: 48px; margin-bottom: 15px;">ðŸ”Œ</div>
+            <h3 style="color: #d32f2f; margin-bottom: 10px;">Network Error</h3>
+            <p style="color: #666; margin-bottom: 10px;">Unable to fetch task details.</p>
+            <p style="color: #999; font-size: 14px; margin-bottom: 20px;">${errorMessage}</p>
+            <button onclick="openTaskDetailsModal('${taskName.replace(/'/g, "\\'")}'); event.stopPropagation();" style="padding: 10px 20px; background: #006039; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s;">
+              ðŸ”„ Try Again
+            </button>
+          </div>
+        `;
+      }
+    }
+
+    function closeTaskDetailsModal() {
+      const modal = document.getElementById('taskDetailsModal');
+      if (!modal) return;
+      // use hide animation then remove from flow
+      modal.classList.remove('show');
+      modal.classList.add('hide');
+      setTimeout(() => {
+        modal.style.display = 'none';
+        modal.classList.remove('hide');
+      }, 300);
+    }
+
+    // Close task details modal when clicking outside content
+    document.addEventListener('click', function (event) {
+      const modal = document.getElementById('taskDetailsModal');
+      if (!modal) return;
+      if (modal.style.display === 'flex' && event.target === modal) {
+        closeTaskDetailsModal();
+      }
+    });
+
+    // Close with Escape key
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeTaskDetailsModal();
+      }
+    });
+
+  </script>
+
+  <!-- Help Modal -->
+  <div id="helpModal" class="help-modal" style="display: none;">
+    <div class="help-modal-content">
+      <button class="help-modal-close" onclick="closeHelpModal()">&times;</button>
+      <iframe id="helpIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="help-modal" style="display: none;">
+    <div class="help-modal-content">
+      <button class="help-modal-close" onclick="closeSettingsModal()">&times;</button>
+      <iframe id="settingsIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+  </div>
+
+  <style>
+    .help-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .help-modal-content {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: white;
+      border-radius: 0px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.3s ease;
+    }
+
+    .help-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 30px;
+      z-index: 10001;
+      background: rgba(255, 255, 255, 0.95);
+      border: none;
+      font-size: 25px;
+      font-weight: bold;
+      width: 33px;
+      height: 31px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .help-modal-close:hover {
+      background: #f44336;
+      color: white;
+      transform: rotate(90deg) scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <script>
+    function openHelpModal() {
+      const modal = document.getElementById('helpModal');
+      const iframe = document.getElementById('helpIframe');
+
+      // Load help content in iframe
+      iframe.src = '/help';
+
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeHelpModal() {
+      const modal = document.getElementById('helpModal');
+      const iframe = document.getElementById('helpIframe');
+
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+
+      // Clear iframe to stop any running scripts
+      iframe.src = '';
+    }
+
+    function openSettingsModal() {
+      const modal = document.getElementById('settingsModal');
+      const iframe = document.getElementById('settingsIframe');
+
+      // Load settings content in iframe
+      iframe.src = '/settings';
+
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSettingsModal() {
+      const modal = document.getElementById('settingsModal');
+      const iframe = document.getElementById('settingsIframe');
+
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+
+      // Clear iframe to stop any running scripts
+      iframe.src = '';
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        const helpModal = document.getElementById('helpModal');
+        const settingsModal = document.getElementById('settingsModal');
+
+        if (helpModal && helpModal.style.display === 'flex') {
+          closeHelpModal();
+        }
+        if (settingsModal && settingsModal.style.display === 'flex') {
+          closeSettingsModal();
+        }
+      }
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function (event) {
+      const helpModal = document.getElementById('helpModal');
+      const settingsModal = document.getElementById('settingsModal');
+
+      if (helpModal && event.target === helpModal) {
+        closeHelpModal();
+      }
+      if (settingsModal && event.target === settingsModal) {
+        closeSettingsModal();
+      }
+    });
+  </script>
+
+  <!-- Main Application Scripts -->
+  <script src="../static/script/client.js"></script>
+</body>
+
+</html>
