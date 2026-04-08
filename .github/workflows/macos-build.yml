@@ -49,8 +49,8 @@ jobs:
           cd macos
           mkdir -p dist/DDSFocusPro.app/Contents/MacOS
           mkdir -p dist/DDSFocusPro.app/Contents/Resources
-          cp dist/connector dist/DDSFocusPro.app/Contents/MacOS/
-          cp dist/desktop dist/DDSFocusPro.app/Contents/MacOS/
+          cp -r dist/connector/* dist/DDSFocusPro.app/Contents/MacOS/
+          cp -r dist/desktop/* dist/DDSFocusPro.app/Contents/MacOS/
           cp -r templates dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
           cp -r static dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
           cp themes.json dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
