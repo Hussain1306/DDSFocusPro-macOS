@@ -25,7 +25,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r macos/requirements_macos.txt
-          pip install pyinstaller
+          pip install pyinstaller pywebview rumps pillow
 
       - name: Copy resources to macos folder
         run: |
@@ -39,12 +39,20 @@ jobs:
           cd macos
           pyinstaller connector.spec --clean --noconfirm
 
+      - name: Build Desktop GUI executable
+        run: |
+          cd macos
+          pyinstaller desktop.py --noconfirm --windowed --name desktop --add-data "templates:templates" --add-data "static:static" --hidden-imports "flask,werkzeug,jinja2,webview,psutil,rumps"
+
       - name: Create .app bundle
         run: |
           cd macos
           mkdir -p dist/DDSFocusPro.app/Contents/MacOS
           mkdir -p dist/DDSFocusPro.app/Contents/Resources
-          cp -r dist/connector/* dist/DDSFocusPro.app/Contents/MacOS/
+          cp dist/connector dist/DDSFocusPro.app/Contents/MacOS/
+          cp dist/desktop dist/DDSFocusPro.app/Contents/MacOS/
+          cp -r dist/templates dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
+          cp -r dist/static dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
           cp -r templates dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
           cp -r static dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
           cp themes.json dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
@@ -55,7 +63,7 @@ jobs:
           <plist version="1.0">
           <dict>
               <key>CFBundleDevelopmentRegion</key><string>English</string>
-              <key>CFBundleExecutable</key><string>connector</string>
+              <key>CFBundleExecutable</key><string>desktop</string>
               <key>CFBundleIdentifier</key><string>com.ddsolutions.ddsfocuspro</string>
               <key>CFBundleName</key><string>DDS Focus Pro</string>
               <key>CFBundleDisplayName</key><string>DDS Focus Pro</string>
