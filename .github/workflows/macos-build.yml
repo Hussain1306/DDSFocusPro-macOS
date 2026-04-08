@@ -27,6 +27,13 @@ jobs:
           pip install -r macos/requirements_macos.txt
           pip install pyinstaller
 
+      - name: Copy resources to macos folder
+        run: |
+          cp -r templates macos/
+          cp -r static macos/
+          cp themes.json macos/
+          cp version.py macos/
+
       - name: Build Connector executable
         run: |
           cd macos
