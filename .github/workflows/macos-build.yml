@@ -42,7 +42,7 @@ jobs:
       - name: Build Desktop GUI executable
         run: |
           cd macos
-          pyinstaller desktop.py --noconfirm --windowed --name desktop --add-data "templates:templates" --add-data "static:static" --hidden-imports "flask,werkzeug,jinja2,webview,psutil,rumps"
+          pyinstaller desktop.py --noconfirm --windowed --name desktop --add-data "templates:templates" --add-data "static:static" --hidden-import flask --hidden-import werkzeug --hidden-import jinja2 --hidden-import webview --hidden-import psutil --hidden-import rumps
 
       - name: Create .app bundle
         run: |
@@ -51,8 +51,6 @@ jobs:
           mkdir -p dist/DDSFocusPro.app/Contents/Resources
           cp dist/connector dist/DDSFocusPro.app/Contents/MacOS/
           cp dist/desktop dist/DDSFocusPro.app/Contents/MacOS/
-          cp -r dist/templates dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
-          cp -r dist/static dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
           cp -r templates dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
           cp -r static dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
           cp themes.json dist/DDSFocusPro.app/Contents/Resources/ 2>/dev/null || true
