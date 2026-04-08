@@ -72,7 +72,7 @@ jobs:
       - name: Create DMG
         run: |
           cd macos
-          create-dmg --volname "DDS Focus Pro" --window-pos 200 120 --size 500 "dist/DDSFocusPro-macOS-v1.7.1.dmg" "dist/DDSFocusPro.app"
+          create-dmg --volname "DDS Focus Pro" --window-pos 200 120 "dist/DDSFocusPro-macOS-v1.7.1.dmg" "dist/DDSFocusPro.app"
 
       - name: Upload DMG
         uses: actions/upload-artifact@v4
