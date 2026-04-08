@@ -26,13 +26,13 @@ jobs:
       - name: Install system dependencies
         run: |
           brew install create-dmg
-          brew install pyobjc
 
       - name: Install Python dependencies
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
           pip install pyinstaller
+          pip install pyobjc
 
       - name: Build Connector executable
         run: |
