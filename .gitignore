@@ -35,6 +35,7 @@ Thumbs.db
 *.dll
 *.dmg
 *.app
+*.zip
 
 # Local data
 data/
