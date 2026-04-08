@@ -1,10 +1,8 @@
-name: Build macOS DMG
+"name: Build macOS DMG
 
 on:
   push:
-    branches: [main, macos]
-    tags:
-      - 'v*'
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -84,6 +82,7 @@ jobs:
       - name: Upload DMG artifact
         uses: actions/upload-artifact@v4
         with:
-          name: "DDSFocusPro-macOS-dmg"
+          name: DDSFocusPro-macOS-dmg
           path: macos/dist/DDSFocusPro-macOS-v1.7.1.dmg
           retention-days: 30
+"
